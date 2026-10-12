@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Trip Result | TravelVerse AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/trip_result.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+
+        .ai-result {
+            white-space: pre-wrap;
+            line-height: 1.8;
+            font-size: 15px;
+            color: #444;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 30px;
+            font-size: 18px;
+        }
+
+        .destination-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2633a8;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 Your AI Generated Trip</h1>
+
+    <p>Your personalized travel plan is ready!</p>
+
+
+    <!-- DESTINATION -->
+
+    <div class="card">
+
+        <h2>📍 Destination</h2>
+
+        <p id="destination"
+           class="destination-name">
+            Loading...
+        </p>
+
+    </div>
+
+
+    <!-- TRAVEL DETAILS -->
+
+    <div class="card">
+
+        <h2>✈️ Travel Details</h2>
+
+        <p>
+            📅 Start Date:
+            <strong id="startDate">Loading...</strong>
+        </p>
+
+        <p>
+            📅 End Date:
+            <strong id="endDate">Loading...</strong>
+        </p>
+
+        <p>
+            👥 Travellers:
+            <strong id="travellers">Loading...</strong>
+        </p>
+
+        <p>
+            🎯 Trip Type:
+            <strong id="tripType">Loading...</strong>
+        </p>
+
+        <p>
+            🚗 Transport:
+            <strong id="transport">Loading...</strong>
+        </p>
+
+        <p>
+            🏨 Hotel:
+            <strong id="hotel">Loading...</strong>
+        </p>
+
+        <p>
+            🍽️ Food:
+            <strong id="food">Loading...</strong>
+        </p>
+
+        <p>
+            💰 Budget:
+            <strong id="totalBudget">Loading...</strong>
+        </p>
+
+    </div>
+
+
+    <!-- AI RESULT -->
+
+    <div class="card">
+
+        <h2>🤖 AI Travel Plan</h2>
+
+        <div id="aiResult"
+             class="ai-result">
+
+            <div class="loading">
+                🤖 Loading your AI travel plan...
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BACK BUTTON -->
+
+    <button onclick="window.location.href='/dashboard'">
+
+        🏠 Back to Dashboard
+
+    </button>
+
+
+    <button onclick="window.location.href='/planner'">
+
+        ✈️ Plan Another Trip
+
+    </button>
+
+
+</div>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* Get saved trip details */
+
+    const destination =
+        localStorage.getItem("tripDestination") || "Unknown";
+
+    const startDate =
+        localStorage.getItem("tripStartDate") || "Not Provided";
+
+    const endDate =
+        localStorage.getItem("tripEndDate") || "Not Provided";
+
+    const budget =
+        localStorage.getItem("tripBudget") || "0";
+
+    const travellers =
+        localStorage.getItem("tripTravellers") || "1";
+
+    const tripType =
+        localStorage.getItem("tripType") || "Solo";
+
+    const transport =
+        localStorage.getItem("tripTransport") || "Flight";
+
+    const hotel =
+        localStorage.getItem("tripHotel") || "3 Star";
+
+    const food =
+        localStorage.getItem("tripFood") || "Vegetarian";
+
+
+    /* Display details */
+
+    document.getElementById("destination").innerText =
+        destination;
+
+    document.getElementById("startDate").innerText =
+        startDate;
+
+    document.getElementById("endDate").innerText =
+        endDate;
+
+    document.getElementById("travellers").innerText =
+        travellers;
+
+    document.getElementById("tripType").innerText =
+        tripType;
+
+    document.getElementById("transport").innerText =
+        transport;
+
+    document.getElementById("hotel").innerText =
+        hotel;
+
+    document.getElementById("food").innerText =
+        food;
+
+    document.getElementById("totalBudget").innerText =
+        "₹" + Number(budget).toLocaleString("en-IN");
+
+
+    /* Get AI response */
+
+    const aiResult =
+        localStorage.getItem("aiTripResult");
+
+
+    const resultBox =
+        document.getElementById("aiResult");
+
+
+    if (aiResult) {
+
+        resultBox.innerText = aiResult;
+
+    }
+
+    else {
+
+        resultBox.innerHTML = `
+            <div class="loading">
+                ❌ AI result not found.
+                <br><br>
+                Please go back and generate the trip again.
+            </div>
+        `;
+
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>

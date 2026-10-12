@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Destinations | TravelVerse AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/destinations.css') }}">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <a href="/dashboard" class="logo">
+        🌍 TravelVerse <span>AI</span>
+    </a>
+
+    <div class="nav-links">
+
+        <a href="/dashboard">
+            🏠 Dashboard
+        </a>
+
+        <a href="/destinations" class="active">
+            🗺️ Destinations
+        </a>
+
+        <a href="/planner">
+            ✨ AI Planner
+        </a>
+
+        <a href="/wishlist">
+            ❤️ Wishlist
+        </a>
+
+        <a href="/profile">
+            👤 Profile
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+
+<section class="destinations-hero">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            ✈️ Explore • Discover • Travel
+        </div>
+
+        <h1>
+            Find Your Next Adventure
+        </h1>
+
+        <p>
+            Discover beautiful destinations around the world
+            and create unforgettable memories with
+            <strong>TravelVerse AI.</strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<div class="search-box">
+
+    <span class="search-icon">
+        🔍
+    </span>
+
+    <input
+        type="text"
+        id="destinationSearch"
+        placeholder="Search destinations..."
+        autocomplete="off"
+    >
+
+</div>
+
+
+<!-- =========================
+     DESTINATIONS SECTION
+========================= -->
+
+<section class="destinations-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <small>
+                ✨ Discover Places
+            </small>
+
+            <h2>
+                Popular Destinations
+            </h2>
+
+        </div>
+
+        <span class="destination-count"
+              id="destinationCount">
+            30 destinations
+        </span>
+
+    </div>
+
+
+    <!-- =========================
+         CATEGORY FILTERS
+    ========================= -->
+
+    <div class="category-buttons">
+
+        <button class="active"
+                data-filter="all">
+            🌎 All
+        </button>
+
+        <button data-filter="beach">
+            🏖️ Beach
+        </button>
+
+        <button data-filter="mountain">
+            🏔️ Mountain
+        </button>
+
+        <button data-filter="heritage">
+            🏛️ Heritage
+        </button>
+
+        <button data-filter="international">
+            ✈️ International
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         DESTINATION GRID
+    ========================= -->
+
+    <div class="destination-grid"
+         id="destinationGrid">
+
+
+        <!-- =========================
+             1. GOA
+        ========================= -->
+
+        <div class="place-card"
+             data-category="beach"
+             data-name="Goa">
+
+            <div class="place-image goa">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Goa')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Goa</h3>
+
+                <p>
+                    🏖️ Beaches • Nightlife • Water Sports
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.8
+                    </span>
+
+                    <span class="price">
+                        ₹15,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2 OOTY -->
+
+        <div class="place-card"
+             data-category="mountain"
+             data-name="Ooty">
+
+            <div class="place-image ooty">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Ooty')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Ooty</h3>
+
+                <p>
+                    🌿 Hills • Tea Gardens • Nature
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.7
+                    </span>
+
+                    <span class="price">
+                        ₹8,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 3 MUNNAR -->
+
+        <div class="place-card"
+             data-category="mountain"
+             data-name="Munnar">
+
+            <div class="place-image munnar">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Munnar')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Munnar</h3>
+
+                <p>
+                    🍃 Tea Estates • Mountains • Waterfalls
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.8
+                    </span>
+
+                    <span class="price">
+                        ₹9,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 4 KODAIKANAL -->
+
+        <div class="place-card"
+             data-category="mountain"
+             data-name="Kodaikanal">
+
+            <div class="place-image kodaikanal">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Kodaikanal')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Kodaikanal</h3>
+
+                <p>
+                    🌲 Lakes • Forests • Hill Views
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.7
+                    </span>
+
+                    <span class="price">
+                        ₹7,500+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 5 COORG -->
+
+        <div class="place-card"
+             data-category="mountain"
+             data-name="Coorg">
+
+            <div class="place-image coorg">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Coorg')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Coorg</h3>
+
+                <p>
+                    ☕ Coffee • Forests • Waterfalls
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.6
+                    </span>
+
+                    <span class="price">
+                        ₹8,500+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 6 WAYANAD -->
+
+        <div class="place-card"
+             data-category="mountain"
+             data-name="Wayanad">
+
+            <div class="place-image wayanad">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Wayanad')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Wayanad</h3>
+
+                <p>
+                    🌳 Wildlife • Caves • Nature
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.6
+                    </span>
+
+                    <span class="price">
+                        ₹7,500+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 7 PONDICHERRY -->
+
+        <div class="place-card"
+             data-category="beach"
+             data-name="Pondicherry">
+
+            <div class="place-image pondicherry">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Pondicherry')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Pondicherry</h3>
+
+                <p>
+                    🌊 Beaches • Cafes • French Streets
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.6
+                    </span>
+
+                    <span class="price">
+                        ₹6,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 8 ANDAMAN -->
+
+        <div class="place-card"
+             data-category="beach"
+             data-name="Andaman">
+
+            <div class="place-image andaman">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Andaman')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Andaman</h3>
+
+                <p>
+                    🐚 Islands • Diving • Crystal Water
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.9
+                    </span>
+
+                    <span class="price">
+                        ₹18,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 9 VARKALA -->
+
+        <div class="place-card"
+             data-category="beach"
+             data-name="Varkala">
+
+            <div class="place-image varkala">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Varkala')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Varkala</h3>
+
+                <p>
+                    🌊 Cliff Beach • Sunset • Cafes
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.7
+                    </span>
+
+                    <span class="price">
+                        ₹7,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 10 MANALI -->
+
+        <div class="place-card"
+             data-category="mountain"
+             data-name="Manali">
+
+            <div class="place-image manali">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Manali')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Manali</h3>
+
+                <p>
+                    ❄️ Snow • Adventure • Mountains
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.8
+                    </span>
+
+                    <span class="price">
+                        ₹12,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 11 SHIMLA -->
+
+        <div class="place-card"
+             data-category="mountain"
+             data-name="Shimla">
+
+            <div class="place-image shimla">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Shimla')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Shimla</h3>
+
+                <p>
+                    🏔️ Snow • Mall Road • Hills
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.7
+                    </span>
+
+                    <span class="price">
+                        ₹11,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 12 DARJEELING -->
+
+        <div class="place-card"
+             data-category="mountain"
+             data-name="Darjeeling">
+
+            <div class="place-image darjeeling">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Darjeeling')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Darjeeling</h3>
+
+                <p>
+                    🍵 Tea Gardens • Sunrise • Hills
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.7
+                    </span>
+
+                    <span class="price">
+                        ₹10,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 13 JAIPUR -->
+
+        <div class="place-card"
+             data-category="heritage"
+             data-name="Jaipur">
+
+            <div class="place-image jaipur">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Jaipur')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Jaipur</h3>
+
+                <p>
+                    🏰 Palaces • Forts • Culture
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.8
+                    </span>
+
+                    <span class="price">
+                        ₹9,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 14 AGRA -->
+
+        <div class="place-card"
+             data-category="heritage"
+             data-name="Agra">
+
+            <div class="place-image agra">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Agra')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Agra</h3>
+
+                <p>
+                    🕌 Taj Mahal • History • Architecture
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.8
+                    </span>
+
+                    <span class="price">
+                        ₹7,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 15 HAMPI -->
+
+        <div class="place-card"
+             data-category="heritage"
+             data-name="Hampi">
+
+            <div class="place-image hampi">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Hampi')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Hampi</h3>
+
+                <p>
+                    🏛️ Ruins • Temples • Heritage
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.7
+                    </span>
+
+                    <span class="price">
+                        ₹7,500+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 16 MYSORE -->
+
+        <div class="place-card"
+             data-category="heritage"
+             data-name="Mysore">
+
+            <div class="place-image mysore">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Mysore')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Mysore</h3>
+
+                <p>
+                    👑 Palace • Culture • Food
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.6
+                    </span>
+
+                    <span class="price">
+                        ₹6,500+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 17 VARANASI -->
+
+        <div class="place-card"
+             data-category="heritage"
+             data-name="Varanasi">
+
+            <div class="place-image varanasi">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Varanasi')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Varanasi</h3>
+
+                <p>
+                    🛕 Ghats • Temples • Culture
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.7
+                    </span>
+
+                    <span class="price">
+                        ₹7,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 18 MAHABALIPURAM -->
+
+        <div class="place-card"
+             data-category="heritage"
+             data-name="Mahabalipuram">
+
+            <div class="place-image mahabalipuram">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Mahabalipuram')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Mahabalipuram</h3>
+
+                <p>
+                    🛕 Temples • Shore • Ancient Art
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.6
+                    </span>
+
+                    <span class="price">
+                        ₹5,500+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 19 LEH -->
+
+        <div class="place-card"
+             data-category="mountain"
+             data-name="Leh">
+
+            <div class="place-image leh">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Leh')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Leh</h3>
+
+                <p>
+                    🏔️ Himalayas • Monasteries • Adventure
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.9
+                    </span>
+
+                    <span class="price">
+                        ₹18,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 20 KASHMIR -->
+
+        <div class="place-card"
+             data-category="mountain"
+             data-name="Kashmir">
+
+            <div class="place-image kashmir">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Kashmir')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇳 India
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Kashmir</h3>
+
+                <p>
+                    🏞️ Valleys • Lakes • Snow
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.9
+                    </span>
+
+                    <span class="price">
+                        ₹16,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             INTERNATIONAL
+        ========================= -->
+
+
+        <!-- 21 PARIS -->
+
+        <div class="place-card"
+             data-category="international"
+             data-name="Paris">
+
+            <div class="place-image paris">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Paris')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇫🇷 France
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Paris</h3>
+
+                <p>
+                    🗼 Eiffel Tower • Art • Romance
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.9
+                    </span>
+
+                    <span class="price">
+                        ₹85,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 22 DUBAI -->
+
+        <div class="place-card"
+             data-category="international"
+             data-name="Dubai">
+
+            <div class="place-image dubai">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Dubai')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇦🇪 UAE
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Dubai</h3>
+
+                <p>
+                    🏙️ Skyscrapers • Shopping • Desert
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.8
+                    </span>
+
+                    <span class="price">
+                        ₹45,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 23 BALI -->
+
+        <div class="place-card"
+             data-category="international"
+             data-name="Bali">
+
+            <div class="place-image bali">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Bali')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇩 Indonesia
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Bali</h3>
+
+                <p>
+                    🌴 Beaches • Temples • Resorts
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.9
+                    </span>
+
+                    <span class="price">
+                        ₹40,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 24 MALDIVES -->
+
+        <div class="place-card"
+             data-category="international"
+             data-name="Maldives">
+
+            <div class="place-image maldives">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Maldives')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇲🇻 Maldives
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Maldives</h3>
+
+                <p>
+                    🏝️ Islands • Resorts • Diving
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.9
+                    </span>
+
+                    <span class="price">
+                        ₹55,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 25 SINGAPORE -->
+
+        <div class="place-card"
+             data-category="international"
+             data-name="Singapore">
+
+            <div class="place-image singapore">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Singapore')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇸🇬 Singapore
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Singapore</h3>
+
+                <p>
+                    🌆 Skyline • Gardens • Shopping
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.8
+                    </span>
+
+                    <span class="price">
+                        ₹50,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 26 TOKYO -->
+
+        <div class="place-card"
+             data-category="international"
+             data-name="Tokyo">
+
+            <div class="place-image tokyo">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Tokyo')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇯🇵 Japan
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Tokyo</h3>
+
+                <p>
+                    🗼 Technology • Culture • Food
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.9
+                    </span>
+
+                    <span class="price">
+                        ₹75,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 27 SWITZERLAND -->
+
+        <div class="place-card"
+             data-category="international"
+             data-name="Switzerland">
+
+            <div class="place-image switzerland">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Switzerland')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇨🇭 Switzerland
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Switzerland</h3>
+
+                <p>
+                    🏔️ Alps • Lakes • Snow
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.9
+                    </span>
+
+                    <span class="price">
+                        ₹1,20,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 28 ROME -->
+
+        <div class="place-card"
+             data-category="international"
+             data-name="Rome">
+
+            <div class="place-image rome">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Rome')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇮🇹 Italy
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Rome</h3>
+
+                <p>
+                    🏛️ Colosseum • History • Food
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.8
+                    </span>
+
+                    <span class="price">
+                        ₹90,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 29 BANGKOK -->
+
+        <div class="place-card"
+             data-category="international"
+             data-name="Bangkok">
+
+            <div class="place-image bangkok">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('Bangkok')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇹🇭 Thailand
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>Bangkok</h3>
+
+                <p>
+                    🛕 Temples • Street Food • Shopping
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.7
+                    </span>
+
+                    <span class="price">
+                        ₹35,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 30 NEW YORK -->
+
+        <div class="place-card"
+             data-category="international"
+             data-name="New York">
+
+            <div class="place-image newyork">
+
+                <button class="heart-btn"
+                        onclick="saveToWishlist('New York')">
+                    ♡
+                </button>
+
+                <span class="country">
+                    🇺🇸 USA
+                </span>
+
+            </div>
+
+            <div class="place-info">
+
+                <h3>New York</h3>
+
+                <p>
+                    🗽 Skyline • Times Square • Shopping
+                </p>
+
+                <div class="place-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.8
+                    </span>
+
+                    <span class="price">
+                        ₹1,10,000+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- NO RESULTS -->
+
+    <div id="noResults"
+         class="no-results">
+
+        <div>
+            🔎
+        </div>
+
+        <h3>
+            No destination found
+        </h3>
+
+        <p>
+            Try searching for another destination.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    /* =========================
+       CATEGORY FILTER
+    ========================= */
+
+    const filterButtons =
+        document.querySelectorAll(
+            ".category-buttons button"
+        );
+
+    const destinationCards =
+        document.querySelectorAll(
+            ".place-card"
+        );
+
+    const searchInput =
+        document.getElementById(
+            "destinationSearch"
+        );
+
+    const destinationCount =
+        document.getElementById(
+            "destinationCount"
+        );
+
+    const noResults =
+        document.getElementById(
+            "noResults"
+        );
+
+
+    let currentFilter = "all";
+
+
+    function updateDestinations() {
+
+        const searchText =
+            searchInput.value
+                .toLowerCase()
+                .trim();
+
+        let visibleCount = 0;
+
+
+        destinationCards.forEach(card => {
+
+            const category =
+                card.dataset.category;
+
+            const name =
+                card.dataset.name
+                    .toLowerCase();
+
+
+            const matchesFilter =
+                currentFilter === "all" ||
+                category === currentFilter;
+
+
+            const matchesSearch =
+                name.includes(searchText);
+
+
+            if (
+                matchesFilter &&
+                matchesSearch
+            ) {
+
+                card.style.display = "block";
+
+                visibleCount++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        destinationCount.textContent =
+            visibleCount +
+            (visibleCount === 1
+                ? " destination"
+                : " destinations");
+
+
+        if (visibleCount === 0) {
+
+            noResults.style.display = "block";
+
+        } else {
+
+            noResults.style.display = "none";
+
+        }
+
+    }
+
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                filterButtons.forEach(btn => {
+
+                    btn.classList.remove(
+                        "active"
+                    );
+
+                });
+
+
+                this.classList.add(
+                    "active"
+                );
+
+
+                currentFilter =
+                    this.dataset.filter;
+
+
+                updateDestinations();
+
+            }
+        );
+
+    });
+
+
+    searchInput.addEventListener(
+        "input",
+        updateDestinations
+    );
+
+
+    /* Initial count */
+
+    updateDestinations();
+
+
+    /* =========================
+       WISHLIST
+    ========================= */
+
+    async function saveToWishlist(placeName) {
+
+        const user =
+            JSON.parse(
+                localStorage.getItem(
+                    "travelverseUser"
+                )
+            );
+
+
+        if (!user) {
+
+            alert(
+                "Please login first! 🔐"
+            );
+
+            window.location.href =
+                "/login";
+
+            return;
+
+        }
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "/wishlist",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            user_id: user.id,
+                            destination:
+                                placeName
+                        })
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (data.success) {
+
+                alert(
+                    placeName +
+                    " added to your wishlist ❤️"
+                );
+
+            } else {
+
+                alert(
+                    data.message ||
+                    "Unable to add wishlist."
+                );
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Wishlist error:",
+                error
+            );
+
+            alert(
+                "Unable to connect to server."
+            );
+
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

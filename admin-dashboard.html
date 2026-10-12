@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | TravelVerse AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin-dashboard.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ================================
+         SIDEBAR
+    ================================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                
+            </div>
+
+            <div>
+                <h2>TravelVerse</h2>
+                <span>Admin Panel</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="#dashboard" class="nav-item active">
+                
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#users" class="nav-item">
+                
+                <span>Users</span>
+            </a>
+
+            <a href="#trips" class="nav-item">
+                
+                <span>Trips</span>
+            </a>
+
+            <a href="#travel-bookings" class="nav-item">
+                
+                <span>Travel Bookings</span>
+            </a>
+
+            <a href="#hotel-bookings" class="nav-item">
+                
+                <span>Hotel Bookings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="/admin-logout"
+               class="logout-btn">
+
+                
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================================
+         MAIN CONTENT
+    ================================= -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Admin Dashboard</h1>
+
+                <p>
+                    Manage TravelVerse AI
+                </p>
+
+            </div>
+
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    
+                </div>
+
+                <div>
+
+                    <strong>
+                        {{ admin_name }}
+                    </strong>
+
+                    <small>
+                        {{ admin_email }}
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================================
+             DASHBOARD
+        ================================= -->
+
+        <section id="dashboard"
+                 class="dashboard-section">
+
+            <div class="welcome-box">
+
+                <div>
+
+                    <h2>
+                        Welcome, {{ admin_name }} 
+                    </h2>
+
+                    <p>
+                        Manage users, trips and bookings
+                        from one place.
+                    </p>
+
+                </div>
+
+                <div class="welcome-icon">
+                    
+                </div>
+
+            </div>
+
+
+            <!-- STAT CARDS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon users-icon">
+                        
+                    </div>
+
+                    <div>
+
+                        <span>Total Users</span>
+
+                        <h3 id="totalUsers">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon trips-icon">
+                        
+                    </div>
+
+                    <div>
+
+                        <span>Total Trips</span>
+
+                        <h3 id="totalTrips">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon travel-icon">
+                        ✈️
+                    </div>
+
+                    <div>
+
+                        <span>Travel Bookings</span>
+
+                        <h3 id="totalTravelBookings">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon hotel-icon">
+                        
+                    </div>
+
+                    <div>
+
+                        <span>Hotel Bookings</span>
+
+                        <h3 id="totalHotelBookings">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             USERS
+        ================================= -->
+
+        <section id="users"
+                 class="admin-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        👥 Registered Users
+                    </h2>
+
+                    <p>
+                        View registered TravelVerse users
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Name</th>
+
+                            <th>Email</th>
+
+                            <th>Created At</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="usersTable">
+
+                        <tr>
+
+                            <td colspan="4"
+                                class="loading">
+
+                                Loading users...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             TRIPS
+        ================================= -->
+
+        <section id="trips"
+                 class="admin-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                         User Trips
+                    </h2>
+
+                    <p>
+                        View AI generated trips
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>User</th>
+
+                            <th>Destination</th>
+
+                            <th>Start Date</th>
+
+                            <th>End Date</th>
+
+                            <th>Budget</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tripsTable">
+
+                        <tr>
+
+                            <td colspan="6"
+                                class="loading">
+
+                                Loading trips...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             TRAVEL BOOKINGS
+        ================================= -->
+
+        <section id="travel-bookings"
+                 class="admin-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        ✈️ Travel Bookings
+                    </h2>
+
+                    <p>
+                        Flights, buses and train bookings
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>User</th>
+
+                            <th>Type</th>
+
+                            <th>Service</th>
+
+                            <th>From</th>
+
+                            <th>To</th>
+
+                            <th>Date</th>
+
+                            <th>Amount</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="travelBookingsTable">
+
+                        <tr>
+
+                            <td colspan="8"
+                                class="loading">
+
+                                Loading bookings...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             HOTEL BOOKINGS
+        ================================= -->
+
+        <section id="hotel-bookings"
+                 class="admin-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                         Hotel Bookings
+                    </h2>
+
+                    <p>
+                        View all hotel reservations
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>User</th>
+
+                            <th>Hotel</th>
+
+                            <th>Location</th>
+
+                            <th>Check In</th>
+
+                            <th>Check Out</th>
+
+                            <th>Guests</th>
+
+                            <th>Total</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="hotelBookingsTable">
+
+                        <tr>
+
+                            <td colspan="8"
+                                class="loading">
+
+                                Loading hotel bookings...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+
+    <script>
+
+        /*
+         * Temporary dashboard loader.
+         * Backend data API will be connected
+         * in the next step.
+         */
+
+        async function loadAdminData() {
+
+            try {
+
+                const response =
+                    await fetch("/admin-data");
+
+                const data =
+                    await response.json();
+
+
+                if (!data.success) {
+
+                    console.error(
+                        data.message
+                    );
+
+                    return;
+
+                }
+
+
+                /* ==========================
+                   STATISTICS
+                ========================== */
+
+                document.getElementById(
+                    "totalUsers"
+                ).textContent =
+                    data.stats.users;
+
+
+                document.getElementById(
+                    "totalTrips"
+                ).textContent =
+                    data.stats.trips;
+
+
+                document.getElementById(
+                    "totalTravelBookings"
+                ).textContent =
+                    data.stats.travel_bookings;
+
+
+                document.getElementById(
+                    "totalHotelBookings"
+                ).textContent =
+                    data.stats.hotel_bookings;
+
+
+                /* ==========================
+                   USERS
+                ========================== */
+
+                const usersTable =
+                    document.getElementById(
+                        "usersTable"
+                    );
+
+                usersTable.innerHTML = "";
+
+
+                if (data.users.length === 0) {
+
+                    usersTable.innerHTML = `
+                        <tr>
+                            <td colspan="4"
+                                class="empty">
+                                No users found.
+                            </td>
+                        </tr>
+                    `;
+
+                } else {
+
+                    data.users.forEach(function(user) {
+
+                        usersTable.innerHTML += `
+
+                            <tr>
+
+                                <td>${user.id}</td>
+
+                                <td>
+                                    ${user.name}
+                                </td>
+
+                                <td>
+                                    ${user.email}
+                                </td>
+
+                                <td>
+                                    ${user.created_at || "-"}
+                                </td>
+
+                            </tr>
+
+                        `;
+
+                    });
+
+                }
+
+
+                /* ==========================
+                   TRIPS
+                ========================== */
+
+                const tripsTable =
+                    document.getElementById(
+                        "tripsTable"
+                    );
+
+                tripsTable.innerHTML = "";
+
+
+                if (data.trips.length === 0) {
+
+                    tripsTable.innerHTML = `
+                        <tr>
+                            <td colspan="6"
+                                class="empty">
+                                No trips found.
+                            </td>
+                        </tr>
+                    `;
+
+                } else {
+
+                    data.trips.forEach(function(trip) {
+
+                        tripsTable.innerHTML += `
+
+                            <tr>
+
+                                <td>
+                                    ${trip.id}
+                                </td>
+
+                                <td>
+                                    ${trip.user_name || "-"}
+                                </td>
+
+                                <td>
+                                    ${trip.destination}
+                                </td>
+
+                                <td>
+                                    ${trip.start_date || "-"}
+                                </td>
+
+                                <td>
+                                    ${trip.end_date || "-"}
+                                </td>
+
+                                <td>
+                                    ₹${trip.budget || 0}
+                                </td>
+
+                            </tr>
+
+                        `;
+
+                    });
+
+                }
+
+
+                /* ==========================
+                   TRAVEL BOOKINGS
+                ========================== */
+
+                const travelTable =
+                    document.getElementById(
+                        "travelBookingsTable"
+                    );
+
+                travelTable.innerHTML = "";
+
+
+                if (
+                    data.travel_bookings.length === 0
+                ) {
+
+                    travelTable.innerHTML = `
+                        <tr>
+                            <td colspan="8"
+                                class="empty">
+                                No travel bookings found.
+                            </td>
+                        </tr>
+                    `;
+
+                } else {
+
+                    data.travel_bookings.forEach(
+                        function(booking) {
+
+                            travelTable.innerHTML += `
+
+                                <tr>
+
+                                    <td>
+                                        ${booking.id}
+                                    </td>
+
+                                    <td>
+                                        ${booking.user_name || "-"}
+                                    </td>
+
+                                    <td>
+                                        ${booking.booking_type}
+                                    </td>
+
+                                    <td>
+                                        ${booking.service_name}
+                                    </td>
+
+                                    <td>
+                                        ${booking.from_location}
+                                    </td>
+
+                                    <td>
+                                        ${booking.to_location}
+                                    </td>
+
+                                    <td>
+                                        ${booking.travel_date}
+                                    </td>
+
+                                    <td>
+                                        ₹${booking.amount}
+                                    </td>
+
+                                </tr>
+
+                            `;
+
+                        }
+                    );
+
+                }
+
+
+                /* ==========================
+                   HOTEL BOOKINGS
+                ========================== */
+
+                const hotelTable =
+                    document.getElementById(
+                        "hotelBookingsTable"
+                    );
+
+                hotelTable.innerHTML = "";
+
+
+                if (
+                    data.hotel_bookings.length === 0
+                ) {
+
+                    hotelTable.innerHTML = `
+                        <tr>
+                            <td colspan="8"
+                                class="empty">
+                                No hotel bookings found.
+                            </td>
+                        </tr>
+                    `;
+
+                } else {
+
+                    data.hotel_bookings.forEach(
+                        function(booking) {
+
+                            hotelTable.innerHTML += `
+
+                                <tr>
+
+                                    <td>
+                                        ${booking.id}
+                                    </td>
+
+                                    <td>
+                                        ${booking.user_name || "-"}
+                                    </td>
+
+                                    <td>
+                                        ${booking.hotel_name}
+                                    </td>
+
+                                    <td>
+                                        ${booking.location}
+                                    </td>
+
+                                    <td>
+                                        ${booking.check_in}
+                                    </td>
+
+                                    <td>
+                                        ${booking.check_out}
+                                    </td>
+
+                                    <td>
+                                        ${booking.guests}
+                                    </td>
+
+                                    <td>
+                                        ₹${booking.total_amount}
+                                    </td>
+
+                                </tr>
+
+                            `;
+
+                        }
+                    );
+
+                }
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin data error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* Load dashboard */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            loadAdminData
+        );
+
+    </script>
+
+</body>
+
+</html>

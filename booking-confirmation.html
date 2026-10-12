@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Booking Confirmation | TravelVerse AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/booking-confirmation.css') }}">
+</head>
+
+<body>
+
+    <div class="confirmation-container">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h1>Booking Confirmed!</h1>
+
+        <p class="success-message">
+            Your journey has been successfully booked.
+        </p>
+
+        <div id="bookingDetails" class="booking-details">
+            Loading booking details...
+        </div>
+
+        <div class="confirmation-buttons">
+
+    <button onclick="goToDashboard()">
+        🏠 Back to Dashboard
+    </button>
+
+</div>
+
+    </div>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const bookingData =
+            localStorage.getItem("lastBooking");
+
+        const details =
+            document.getElementById("bookingDetails");
+
+
+        if (!bookingData) {
+
+            details.innerHTML = `
+                <p>Booking details not found.</p>
+            `;
+
+            return;
+        }
+
+
+        const booking =
+            JSON.parse(bookingData);
+
+
+        details.innerHTML = `
+
+            <div class="detail-row">
+                <span>Booking ID</span>
+                <strong>#${booking.booking_id}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Type</span>
+                <strong>${booking.booking_type}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Service</span>
+                <strong>${booking.service_name}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>From</span>
+                <strong>${booking.from_location}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>To</span>
+                <strong>${booking.to_location}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Travel Date</span>
+                <strong>${booking.travel_date}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Departure</span>
+                <strong>${booking.departure_time}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Arrival</span>
+                <strong>${booking.arrival_time}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Passengers</span>
+                <strong>${booking.passengers}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Class</span>
+                <strong>${booking.seat_class}</strong>
+            </div>
+
+            <div class="detail-row total">
+                <span>Total Amount</span>
+                <strong>₹${booking.amount}</strong>
+            </div>
+
+            <div class="status">
+                ✓ Confirmed
+            </div>
+
+        `;
+
+    });
+
+
+
+function goToDashboard() {
+
+    window.location.href =
+        "/dashboard";
+
+}
+
+</script>
+
+</body>
+</html>

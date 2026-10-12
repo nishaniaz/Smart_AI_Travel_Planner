@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | TravelVerse AI</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/profile.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="profile-page">
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <div class="profile-header">
+
+        <button onclick="window.location.href='/dashboard'">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Dashboard
+
+        </button>
+
+
+        <h1>
+            My Profile
+        </h1>
+
+    </div>
+
+
+
+    <!-- =================================================
+         PROFILE CARD
+    ================================================== -->
+
+    <div class="profile-card">
+
+        <div class="profile-avatar">
+
+            <i class="fa-solid fa-user"></i>
+
+        </div>
+
+
+        <h2 id="profileName">
+            User
+        </h2>
+
+
+        <p class="email">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            <span id="profileEmail">
+                user@example.com
+            </span>
+
+        </p>
+
+
+        <p class="traveller">
+
+            <i class="fa-solid fa-plane"></i>
+
+            Travel Explorer
+
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         PERSONAL INFORMATION
+    ================================================== -->
+
+    <div class="info-section">
+
+        <h2>
+
+            <i class="fa-solid fa-circle-user"></i>
+
+            Personal Information
+
+        </h2>
+
+
+        <div class="info-grid">
+
+
+            <!-- Full Name -->
+
+            <div class="info-box">
+
+                <label>
+                    Full Name
+                </label>
+
+                <p id="infoName">
+                    User
+                </p>
+
+            </div>
+
+
+
+            <!-- Email -->
+
+            <div class="info-box">
+
+                <label>
+                    Email
+                </label>
+
+                <p id="infoEmail">
+                    user@example.com
+                </p>
+
+            </div>
+
+
+
+            <!-- Country -->
+
+            <div class="info-box">
+
+                <label>
+                    Country
+                </label>
+
+                <p>
+                    India 🇮🇳
+                </p>
+
+            </div>
+
+
+
+            <!-- Traveller Type -->
+
+            <div class="info-box">
+
+                <label>
+                    Traveller Type
+                </label>
+
+                <p>
+                    Explorer
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         TRAVEL STATISTICS
+    ================================================== -->
+
+    <div class="stats-section">
+
+        <h2>
+
+            <i class="fa-solid fa-chart-simple"></i>
+
+            Travel Statistics
+
+        </h2>
+
+
+        <div class="stats-grid">
+
+
+            <!-- Places Visited -->
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-map-location-dot"></i>
+
+                <h3 id="placesVisited">
+                    0
+                </h3>
+
+                <p>
+                    Places Visited
+                </p>
+
+            </div>
+
+
+
+            <!-- Wishlist -->
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-heart"></i>
+
+                <h3 id="profileWishlist">
+                    0
+                </h3>
+
+                <p>
+                    Wishlist
+                </p>
+
+            </div>
+
+
+
+            <!-- Trips Planned -->
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-suitcase-rolling"></i>
+
+                <h3 id="tripsPlanned">
+                    0
+                </h3>
+
+                <p>
+                    Trips Planned
+                </p>
+
+            </div>
+
+
+
+            <!-- Countries -->
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-earth-americas"></i>
+
+                <h3>
+                    01
+                </h3>
+
+                <p>
+                    Countries
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         PROFILE ACTIONS
+    ================================================== -->
+
+    <div class="profile-actions">
+
+
+        <button class="edit-btn"
+                onclick="showEditMessage()">
+
+            <i class="fa-solid fa-pen"></i>
+
+            Edit Profile
+
+        </button>
+
+
+
+        <button class="logout-btn"
+                onclick="logoutUser()">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", async function () {
+
+
+    // =================================================
+    // GET LOGGED-IN USER
+    // =================================================
+
+    const userData =
+        localStorage.getItem("travelverseUser");
+
+
+    // If user is not logged in
+
+    if (!userData) {
+
+        window.location.href = "/login";
+
+        return;
+
+    }
+
+
+    const user =
+        JSON.parse(userData);
+
+
+
+    // =================================================
+    // USER NAME
+    // =================================================
+
+    const profileName =
+        document.getElementById("profileName");
+
+    const infoName =
+        document.getElementById("infoName");
+
+
+    if (user.name) {
+
+        profileName.textContent =
+            user.name;
+
+        infoName.textContent =
+            user.name;
+
+    }
+
+
+
+    // =================================================
+    // USER EMAIL
+    // =================================================
+
+    const profileEmail =
+        document.getElementById("profileEmail");
+
+    const infoEmail =
+        document.getElementById("infoEmail");
+
+
+    if (user.email) {
+
+        profileEmail.textContent =
+            user.email;
+
+        infoEmail.textContent =
+            user.email;
+
+    }
+
+
+
+    // =================================================
+    // GET DASHBOARD DATA
+    // =================================================
+
+    try {
+
+        const response = await fetch(
+            "/dashboard-data?user_id=" + user.id
+        );
+
+
+        const data =
+            await response.json();
+
+
+        if (data.success) {
+
+
+            // =========================================
+            // TRIPS
+            // =========================================
+
+            const tripsPlanned =
+                document.getElementById("tripsPlanned");
+
+
+            if (tripsPlanned) {
+
+                tripsPlanned.textContent =
+                    data.trip_count;
+
+            }
+
+
+
+            // =========================================
+            // WISHLIST
+            // =========================================
+
+            const profileWishlist =
+                document.getElementById("profileWishlist");
+
+
+            if (profileWishlist) {
+
+                profileWishlist.textContent =
+                    data.wishlist_count;
+
+            }
+
+
+
+            // =========================================
+            // PLACES VISITED
+            // =========================================
+
+            const placesVisited =
+                document.getElementById("placesVisited");
+
+
+            if (placesVisited) {
+
+                placesVisited.textContent =
+                    data.trip_count;
+
+            }
+
+        }
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Profile data error:",
+            error
+        );
+
+    }
+
+});
+
+
+
+/* =====================================================
+   EDIT PROFILE
+===================================================== */
+
+function showEditMessage() {
+
+    alert(
+        "Edit Profile feature is coming soon! ✨"
+    );
+
+}
+
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logoutUser() {
+
+    localStorage.removeItem(
+        "travelverseUser"
+    );
+
+    window.location.href =
+        "/login";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

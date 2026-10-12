@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #667eea,
+        #764ba2
+    );
+
+    padding: 30px;
+}
+
+.confirmation-container {
+    width: 100%;
+    max-width: 650px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+    color: white;
+
+    font-size: 45px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 32px;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.booking-details {
+    text-align: left;
+
+    background: #f8f9ff;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    margin-bottom: 30px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    color: #555;
+}
+
+.detail-row strong {
+    color: #222;
+    text-align: right;
+}
+
+.detail-row.total {
+    border-bottom: none;
+
+    margin-top: 10px;
+    padding-top: 18px;
+
+    font-size: 20px;
+}
+
+.detail-row.total strong {
+    color: #667eea;
+}
+
+.status {
+    margin-top: 20px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: #dcfce7;
+    color: #15803d;
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+.confirmation-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.confirmation-buttons button {
+    border: none;
+
+    padding: 13px 25px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background: #667eea;
+    color: white;
+
+    transition: 0.3s;
+}
+
+.confirmation-buttons button:hover {
+    transform: translateY(-2px);
+
+    background: #5568d8;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .confirmation-container {
+        padding: 25px 18px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .detail-row {
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+    .detail-row strong {
+        text-align: left;
+    }
+
+    .confirmation-buttons {
+        flex-direction: column;
+    }
+
+    .confirmation-buttons button {
+        width: 100%;
+    }
+
+}

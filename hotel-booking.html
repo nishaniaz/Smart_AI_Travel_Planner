@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hotel Booking | TravelVerse AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/hotel-booking.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+         TravelVerse <span>AI</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/dashboard">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </a>
+
+        <a href="/destinations">
+            <i class="fa-solid fa-location-dot"></i>
+            Destinations
+        </a>
+
+        <a href="/planner">
+            <i class="fa-solid fa-route"></i>
+            AI Planner
+        </a>
+
+        <a href="/wishlist">
+            <i class="fa-solid fa-heart"></i>
+            Wishlist
+        </a>
+
+        <a href="/profile">
+            <i class="fa-solid fa-user"></i>
+            Profile
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            <i class="fa-solid fa-hotel"></i>
+            HOTEL BOOKING
+        </div>
+
+        <h1>
+            Find Your Perfect Stay 
+        </h1>
+
+        <p>
+            Search comfortable hotels and book your stay easily with TravelVerse AI.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SEARCH BOX ================= -->
+
+<section class="search-section">
+
+    <div class="search-box">
+
+        <div class="input-group">
+
+            <label>
+                <i class="fa-solid fa-location-dot"></i>
+                Destination
+            </label>
+
+            <input
+                type="text"
+                id="destination"
+                placeholder="e.g. Goa, Ooty, Chennai">
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>
+                <i class="fa-solid fa-calendar"></i>
+                Check-in
+            </label>
+
+            <input
+                type="date"
+                id="checkIn">
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>
+                <i class="fa-solid fa-calendar-check"></i>
+                Check-out
+            </label>
+
+            <input
+                type="date"
+                id="checkOut">
+
+        </div>
+
+
+        <div class="input-group small-input">
+
+            <label>
+                <i class="fa-solid fa-users"></i>
+                Guests
+            </label>
+
+            <input
+                type="number"
+                id="guests"
+                min="1"
+                value="2">
+
+        </div>
+
+
+        <div class="input-group small-input">
+
+            <label>
+                <i class="fa-solid fa-bed"></i>
+                Rooms
+            </label>
+
+            <input
+                type="number"
+                id="rooms"
+                min="1"
+                value="1">
+
+        </div>
+
+
+        <button
+            class="search-btn"
+            onclick="searchHotels()">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Search Hotels
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOTEL SECTION ================= -->
+
+<main class="hotel-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="section-label">
+                <i class="fa-solid fa-building"></i>
+                AVAILABLE STAYS
+            </p>
+
+            <h2>
+                Popular Hotels
+            </h2>
+
+        </div>
+
+        <div
+            class="hotel-count"
+            id="hotelCount">
+
+            6 Hotels
+
+        </div>
+
+    </div>
+
+
+    <!-- HOTEL GRID -->
+
+    <div
+        class="hotel-grid"
+        id="hotelGrid">
+
+
+        <!-- HOTEL 1 -->
+
+        <div
+            class="hotel-card"
+            data-location="goa"
+            data-price="2200">
+
+            <div class="hotel-image beach">
+
+                <span class="hotel-icon">
+                    
+                </span>
+
+                <span class="rating">
+                    ⭐ 4.8
+                </span>
+
+            </div>
+
+            <div class="hotel-content">
+
+                <span class="hotel-location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Goa
+                </span>
+
+                <h3>
+                    Ocean Breeze Resort
+                </h3>
+
+                <p>
+                    Beautiful beachside resort with comfortable rooms.
+                </p>
+
+                <div class="hotel-info">
+
+                    <span>
+                         Deluxe Room
+                    </span>
+
+                    <span>
+                         Breakfast
+                    </span>
+
+                </div>
+
+                <div class="hotel-footer">
+
+                    <div class="price">
+                        ₹2,200
+                        <small>/ night</small>
+                    </div>
+
+                    <button
+                        onclick="bookHotel(
+                            'Ocean Breeze Resort',
+                            'Goa',
+                            'Deluxe Room',
+                            2200
+                        )">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOTEL 2 -->
+
+        <div
+            class="hotel-card"
+            data-location="goa"
+            data-price="2800">
+
+            <div class="hotel-image luxury">
+
+                <span class="hotel-icon">
+                    🌴
+                </span>
+
+                <span class="rating">
+                    ⭐ 4.7
+                </span>
+
+            </div>
+
+            <div class="hotel-content">
+
+                <span class="hotel-location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Goa
+                </span>
+
+                <h3>
+                    Palm Paradise Hotel
+                </h3>
+
+                <p>
+                    Premium stay with pool and modern facilities.
+                </p>
+
+                <div class="hotel-info">
+
+                    <span>
+                         Premium Room
+                    </span>
+
+                    <span>
+                         Pool
+                    </span>
+
+                </div>
+
+                <div class="hotel-footer">
+
+                    <div class="price">
+                        ₹2,800
+                        <small>/ night</small>
+                    </div>
+
+                    <button
+                        onclick="bookHotel(
+                            'Palm Paradise Hotel',
+                            'Goa',
+                            'Premium Room',
+                            2800
+                        )">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOTEL 3 -->
+
+        <div
+            class="hotel-card"
+            data-location="ooty"
+            data-price="1800">
+
+            <div class="hotel-image mountain">
+
+                <span class="hotel-icon">
+                    
+                </span>
+
+                <span class="rating">
+                    ⭐ 4.6
+                </span>
+
+            </div>
+
+            <div class="hotel-content">
+
+                <span class="hotel-location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Ooty
+                </span>
+
+                <h3>
+                    Green Valley Resort
+                </h3>
+
+                <p>
+                    Peaceful mountain stay surrounded by nature.
+                </p>
+
+                <div class="hotel-info">
+
+                    <span>
+                         Standard Room
+                    </span>
+
+                    <span>
+                         Garden
+                    </span>
+
+                </div>
+
+                <div class="hotel-footer">
+
+                    <div class="price">
+                        ₹1,800
+                        <small>/ night</small>
+                    </div>
+
+                    <button
+                        onclick="bookHotel(
+                            'Green Valley Resort',
+                            'Ooty',
+                            'Standard Room',
+                            1800
+                        )">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOTEL 4 -->
+
+        <div
+            class="hotel-card"
+            data-location="chennai"
+            data-price="2500">
+
+            <div class="hotel-image city">
+
+                <span class="hotel-icon">
+                    
+                </span>
+
+                <span class="rating">
+                    ⭐ 4.5
+                </span>
+
+            </div>
+
+            <div class="hotel-content">
+
+                <span class="hotel-location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Chennai
+                </span>
+
+                <h3>
+                    Marina Grand Hotel
+                </h3>
+
+                <p>
+                    Modern city hotel near major attractions.
+                </p>
+
+                <div class="hotel-info">
+
+                    <span>
+                         Deluxe Room
+                    </span>
+
+                    <span>
+                         Restaurant
+                    </span>
+
+                </div>
+
+                <div class="hotel-footer">
+
+                    <div class="price">
+                        ₹2,500
+                        <small>/ night</small>
+                    </div>
+
+                    <button
+                        onclick="bookHotel(
+                            'Marina Grand Hotel',
+                            'Chennai',
+                            'Deluxe Room',
+                            2500
+                        )">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOTEL 5 -->
+
+        <div
+            class="hotel-card"
+            data-location="kerala"
+            data-price="2100">
+
+            <div class="hotel-image nature">
+
+                <span class="hotel-icon">
+                    
+                </span>
+
+                <span class="rating">
+                    ⭐ 4.7
+                </span>
+
+            </div>
+
+            <div class="hotel-content">
+
+                <span class="hotel-location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Kerala
+                </span>
+
+                <h3>
+                    Backwater Retreat
+                </h3>
+
+                <p>
+                    Relaxing stay surrounded by Kerala's backwaters.
+                </p>
+
+                <div class="hotel-info">
+
+                    <span>
+                         Deluxe Room
+                    </span>
+
+                    <span>
+                         Boat Ride
+                    </span>
+
+                </div>
+
+                <div class="hotel-footer">
+
+                    <div class="price">
+                        ₹2,100
+                        <small>/ night</small>
+                    </div>
+
+                    <button
+                        onclick="bookHotel(
+                            'Backwater Retreat',
+                            'Kerala',
+                            'Deluxe Room',
+                            2100
+                        )">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOTEL 6 -->
+
+        <div
+            class="hotel-card"
+            data-location="manali"
+            data-price="3200">
+
+            <div class="hotel-image snow">
+
+                <span class="hotel-icon">
+                    
+                </span>
+
+                <span class="rating">
+                    ⭐ 4.9
+                </span>
+
+            </div>
+
+            <div class="hotel-content">
+
+                <span class="hotel-location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Manali
+                </span>
+
+                <h3>
+                    Himalayan Heights
+                </h3>
+
+                <p>
+                    Scenic mountain hotel with beautiful valley views.
+                </p>
+
+                <div class="hotel-info">
+
+                    <span>
+                         Premium Room
+                    </span>
+
+                    <span>
+                         Mountain View
+                    </span>
+
+                </div>
+
+                <div class="hotel-footer">
+
+                    <div class="price">
+                        ₹3,200
+                        <small>/ night</small>
+                    </div>
+
+                    <button
+                        onclick="bookHotel(
+                            'Himalayan Heights',
+                            'Manali',
+                            'Premium Room',
+                            3200
+                        )">
+
+                        Book Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- NO RESULTS -->
+
+    <div
+        id="noResults"
+        class="no-results">
+
+        <div>
+            
+        </div>
+
+        <h3>
+            No hotels found
+        </h3>
+
+        <p>
+            Try another destination.
+        </p>
+
+    </div>
+
+</main>
+
+
+<script>
+
+/* ==========================================
+   SET MINIMUM DATES
+   ========================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const today = new Date()
+        .toISOString()
+        .split("T")[0];
+
+    document.getElementById("checkIn").min = today;
+
+    document.getElementById("checkOut").min = today;
+
+});
+
+
+/* ==========================================
+   SEARCH HOTELS
+   ========================================== */
+
+function searchHotels() {
+
+    const destination =
+        document
+            .getElementById("destination")
+            .value
+            .trim()
+            .toLowerCase();
+
+    const checkIn =
+        document.getElementById("checkIn").value;
+
+    const checkOut =
+        document.getElementById("checkOut").value;
+
+    const guests =
+        document.getElementById("guests").value;
+
+    const rooms =
+        document.getElementById("rooms").value;
+
+
+    if (!destination) {
+
+        alert("Please enter a destination 📍");
+
+        return;
+
+    }
+
+
+    if (!checkIn || !checkOut) {
+
+        alert("Please select check-in and check-out dates 📅");
+
+        return;
+
+    }
+
+
+    if (new Date(checkOut) <= new Date(checkIn)) {
+
+        alert("Check-out date must be after check-in date.");
+
+        return;
+
+    }
+
+
+    if (guests < 1 || rooms < 1) {
+
+        alert("Please enter valid guests and rooms.");
+
+        return;
+
+    }
+
+
+    const cards =
+        document.querySelectorAll(".hotel-card");
+
+    let visibleCount = 0;
+
+
+    cards.forEach(function (card) {
+
+        const location =
+            card.dataset.location;
+
+        if (
+            location.includes(destination) ||
+            destination.includes(location)
+        ) {
+
+            card.style.display = "block";
+
+            visibleCount++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    document.getElementById("hotelCount").textContent =
+        visibleCount + " Hotels";
+
+
+    if (visibleCount === 0) {
+
+        document.getElementById("noResults")
+            .style.display = "block";
+
+    } else {
+
+        document.getElementById("noResults")
+            .style.display = "none";
+
+    }
+
+
+    document
+        .getElementById("hotelGrid")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* ==========================================
+   BOOK HOTEL
+   ========================================== */
+
+async function bookHotel(
+    hotelName,
+    location,
+    roomType,
+    pricePerNight
+) {
+
+    const user =
+        JSON.parse(
+            localStorage.getItem("travelverseUser")
+        );
+
+
+    if (!user) {
+
+        alert("Please login first 🔐");
+
+        window.location.href = "/login";
+
+        return;
+
+    }
+
+
+    const checkIn =
+        document.getElementById("checkIn").value;
+
+    const checkOut =
+        document.getElementById("checkOut").value;
+
+    const guests =
+        parseInt(
+            document.getElementById("guests").value
+        );
+
+    const rooms =
+        parseInt(
+            document.getElementById("rooms").value
+        );
+
+
+    if (!checkIn || !checkOut) {
+
+        alert("Please select your check-in and check-out dates ");
+
+        return;
+
+    }
+
+
+    if (new Date(checkOut) <= new Date(checkIn)) {
+
+        alert("Please select valid dates.");
+
+        return;
+
+    }
+
+
+    const oneDay = 24 * 60 * 60 * 1000;
+
+    const nights =
+        Math.round(
+            (
+                new Date(checkOut) -
+                new Date(checkIn)
+            ) / oneDay
+        );
+
+
+    const totalAmount =
+        pricePerNight *
+        nights *
+        rooms;
+
+
+    const bookingData = {
+
+        user_id: user.id,
+
+        hotel_name: hotelName,
+
+        location: location,
+
+        check_in: checkIn,
+
+        check_out: checkOut,
+
+        guests: guests,
+
+        rooms: rooms,
+
+        room_type: roomType,
+
+        price_per_night: pricePerNight,
+
+        total_amount: totalAmount
+
+    };
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/add-hotel-booking",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            bookingData
+                        )
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (data.success) {
+
+            localStorage.setItem(
+                "lastHotelBooking",
+                JSON.stringify({
+
+                    ...bookingData,
+
+                    booking_id:
+                        data.booking_id,
+
+                    nights:
+                        nights
+
+                })
+            );
+
+
+            window.location.href =
+                "/hotel-confirmation";
+
+        } else {
+
+            alert(
+                data.message ||
+                "Booking failed."
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Unable to connect to server."
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

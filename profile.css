@@ -1,0 +1,508 @@
+/* =====================================================
+   TRAVELVERSE AI - ATTRACTIVE PROFILE
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at 10% 20%, rgba(124, 92, 255, 0.16), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(255, 93, 143, 0.14), transparent 30%),
+        linear-gradient(135deg, #f5f3ff, #eef7ff);
+
+    color: #282344;
+}
+
+
+/* =====================================================
+   MAIN PAGE
+===================================================== */
+
+.profile-page {
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.profile-header {
+    width: 100%;
+    padding: 32px 7%;
+
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #405de6,
+            #7048e8,
+            #a044ff
+        );
+
+    color: white;
+
+    border-radius: 0 0 35px 35px;
+
+    box-shadow:
+        0 15px 45px rgba(74, 66, 180, 0.25);
+}
+
+.profile-header h1 {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.profile-header button {
+    border: 1px solid rgba(255,255,255,0.35);
+
+    background: rgba(255,255,255,0.16);
+
+    color: white;
+
+    padding: 11px 18px;
+
+    border-radius: 12px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.3s;
+}
+
+.profile-header button:hover {
+    background: white;
+    color: #5c4be7;
+
+    transform: translateX(-3px);
+}
+
+
+/* =====================================================
+   PROFILE CARD
+===================================================== */
+
+.profile-card {
+    width: 86%;
+    max-width: 1050px;
+
+    margin: -25px auto 35px;
+
+    padding: 38px 30px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.92);
+
+    border: 1px solid rgba(255,255,255,0.8);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 55px rgba(55, 43, 110, 0.12);
+
+    backdrop-filter: blur(15px);
+
+    position: relative;
+}
+
+
+/* =====================================================
+   AVATAR
+===================================================== */
+
+.profile-avatar {
+    width: 105px;
+    height: 105px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6257e8,
+            #9c48ed
+        );
+
+    color: white;
+
+    font-size: 43px;
+
+    box-shadow:
+        0 12px 30px rgba(102, 76, 230, 0.35);
+
+    border: 6px solid white;
+}
+
+.profile-card h2 {
+    font-size: 29px;
+    font-weight: 700;
+
+    color: #292342;
+
+    margin-bottom: 8px;
+}
+
+.profile-card .email,
+.profile-card .traveller {
+    color: #77728c;
+
+    font-size: 14px;
+
+    margin-top: 7px;
+}
+
+.profile-card .email i,
+.profile-card .traveller i {
+    color: #6656e8;
+    margin-right: 6px;
+}
+
+.profile-card .traveller {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding: 7px 15px;
+
+    border-radius: 30px;
+
+    background: #f0edff;
+
+    color: #6553d8;
+
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   COMMON SECTION
+===================================================== */
+
+.info-section,
+.stats-section {
+    width: 86%;
+    max-width: 1050px;
+
+    margin: 0 auto 35px;
+}
+
+.info-section h2,
+.stats-section h2 {
+    font-size: 23px;
+
+    margin-bottom: 20px;
+
+    color: #30294d;
+}
+
+.info-section h2 i,
+.stats-section h2 i {
+    color: #6755e8;
+    margin-right: 8px;
+}
+
+
+/* =====================================================
+   INFORMATION GRID
+===================================================== */
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+.info-box {
+    padding: 24px;
+
+    background: rgba(255,255,255,0.9);
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(110,90,220,0.08);
+
+    box-shadow:
+        0 8px 25px rgba(50,40,100,0.06);
+
+    transition: 0.3s;
+}
+
+.info-box:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 14px 32px rgba(50,40,100,0.10);
+}
+
+.info-box label {
+    display: block;
+
+    font-size: 12px;
+
+    color: #8a849e;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+}
+
+.info-box p {
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #332d50;
+}
+
+
+/* =====================================================
+   STATISTICS
+===================================================== */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.stat-card {
+    padding: 25px 15px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.95),
+            rgba(248,246,255,0.95)
+        );
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(110,90,220,0.08);
+
+    box-shadow:
+        0 10px 30px rgba(50,40,100,0.07);
+
+    transition: 0.3s;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6257e8,
+            #a44cf0
+        );
+}
+
+.stat-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 18px 40px rgba(60,45,120,0.14);
+}
+
+.stat-card > i {
+    font-size: 27px;
+
+    color: #6755e8;
+
+    margin-bottom: 12px;
+}
+
+.stat-card h3 {
+    font-size: 29px;
+
+    color: #292342;
+
+    margin-bottom: 4px;
+}
+
+.stat-card p {
+    font-size: 13px;
+
+    color: #858095;
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.profile-actions {
+    width: 86%;
+    max-width: 1050px;
+
+    margin: 5px auto;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+}
+
+.profile-actions button {
+    border: none;
+
+    padding: 13px 24px;
+
+    border-radius: 13px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.edit-btn {
+    background:
+        linear-gradient(
+            135deg,
+            #6557e9,
+            #884ce8
+        );
+
+    color: white;
+
+    box-shadow:
+        0 8px 22px rgba(98,82,220,0.25);
+}
+
+.edit-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 13px 30px rgba(98,82,220,0.35);
+}
+
+.logout-btn {
+    background: white;
+
+    color: #e65375;
+
+    border: 1px solid #f1d5dc !important;
+}
+
+.logout-btn:hover {
+    background: #fff0f3;
+
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .profile-header {
+        padding: 28px 5%;
+
+        flex-wrap: wrap;
+    }
+
+    .profile-header h1 {
+        font-size: 28px;
+    }
+
+    .profile-card,
+    .info-section,
+    .stats-section,
+    .profile-actions {
+        width: 92%;
+    }
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .profile-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .profile-header h1 {
+        font-size: 26px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+    }
+
+    .profile-actions button {
+        width: 100%;
+    }
+}

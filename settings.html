@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | TravelVerse AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/settings.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="settings-page">
+
+    <!-- HEADER -->
+    <header class="settings-header">
+        <div>
+            <h1>⚙️ Settings</h1>
+            <p>Manage your TravelVerse AI preferences</p>
+        </div>
+
+        <a href="/dashboard" class="back-btn">
+            ← Dashboard
+        </a>
+    </header>
+
+
+    <!-- SETTINGS CONTAINER -->
+    <main class="settings-container">
+
+        <!-- ACCOUNT INFORMATION -->
+        <section class="settings-card">
+
+            <div class="card-icon">👤</div>
+
+            <div class="card-content">
+
+                <h2>Account Information</h2>
+
+                <p>
+                    Manage your TravelVerse AI account details.
+                </p>
+
+                <div class="account-info">
+
+                    <div>
+                        <span>Name</span>
+                        <strong id="userName">
+                            Loading...
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Email</span>
+                        <strong id="userEmail">
+                            Loading...
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- NOTIFICATIONS -->
+        <section class="settings-card">
+
+            <div class="card-icon">🔔</div>
+
+            <div class="card-content">
+
+                <h2>Notifications</h2>
+
+                <p>
+                    Receive travel reminders and booking updates.
+                </p>
+
+                <label class="toggle-row">
+
+                    <span>
+                        Enable Notifications
+                    </span>
+
+                    <input type="checkbox"
+                           id="notificationToggle">
+
+                    <span class="toggle"></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- APPEARANCE -->
+        <section class="settings-card">
+
+            <div class="card-icon">🌙</div>
+
+            <div class="card-content">
+
+                <h2>Appearance</h2>
+
+                <p>
+                    Choose how TravelVerse AI looks.
+                </p>
+
+                <label class="toggle-row">
+
+                    <span>
+                        Dark Mode
+                    </span>
+
+                    <input type="checkbox"
+                           id="darkModeToggle">
+
+                    <span class="toggle"></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECURITY -->
+        <section class="settings-card">
+
+            <div class="card-icon">🔐</div>
+
+            <div class="card-content">
+
+                <h2>Security</h2>
+
+                <p>
+                    Keep your account secure.
+                </p>
+
+                <button class="action-btn"
+                        onclick="changePassword()">
+
+                    Change Password
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOGOUT -->
+        <section class="settings-card logout-card">
+
+            <div class="card-icon">🚪</div>
+
+            <div class="card-content">
+
+                <h2>Logout</h2>
+
+                <p>
+                    Sign out from your TravelVerse AI account.
+                </p>
+
+                <button class="logout-btn"
+                        onclick="logout()">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- CHANGE PASSWORD POPUP -->
+
+<div class="password-modal"
+     id="passwordModal">
+
+    <div class="password-box">
+
+        <button class="close-btn"
+                onclick="closePasswordModal()">
+            ✕
+        </button>
+
+        <div class="password-icon">
+            🔐
+        </div>
+
+        <h2>Change Password</h2>
+
+        <p class="password-subtitle">
+            Update your TravelVerse AI account password.
+        </p>
+
+
+        <!-- CURRENT PASSWORD -->
+
+        <div class="password-field">
+
+            <label>
+                Current Password
+            </label>
+
+            <input type="password"
+                   id="currentPassword"
+                   placeholder="Enter current password">
+
+        </div>
+
+
+        <!-- NEW PASSWORD -->
+
+        <div class="password-field">
+
+            <label>
+                New Password
+            </label>
+
+            <input type="password"
+                   id="newPassword"
+                   placeholder="Enter new password">
+
+        </div>
+
+
+        <!-- CONFIRM PASSWORD -->
+
+        <div class="password-field">
+
+            <label>
+                Confirm New Password
+            </label>
+
+            <input type="password"
+                   id="confirmPassword"
+                   placeholder="Confirm new password">
+
+        </div>
+
+
+        <!-- ERROR / SUCCESS MESSAGE -->
+
+        <div id="passwordMessage"
+             class="password-message">
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="password-buttons">
+
+            <button class="cancel-btn"
+                    onclick="closePasswordModal()">
+
+                Cancel
+
+            </button>
+
+            <button class="update-password-btn"
+                    onclick="updatePassword()">
+
+                Update Password
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* ==============================
+       GET LOGGED IN USER
+    ============================== */
+
+    const user = JSON.parse(
+        localStorage.getItem("travelverseUser")
+    );
+
+
+    if (user) {
+
+        document.getElementById("userName").textContent =
+            user.name || "User";
+
+        document.getElementById("userEmail").textContent =
+            user.email || "Not available";
+
+    } else {
+
+        document.getElementById("userName").textContent =
+            "Guest";
+
+        document.getElementById("userEmail").textContent =
+            "Not logged in";
+
+    }
+
+
+    /* ==============================
+       DARK MODE
+    ============================== */
+
+    const darkModeToggle =
+        document.getElementById("darkModeToggle");
+
+
+    if (
+        localStorage.getItem("darkMode") ===
+        "enabled"
+    ) {
+
+        document.body.classList.add("dark-mode");
+
+        darkModeToggle.checked = true;
+
+    }
+
+
+    darkModeToggle.addEventListener(
+        "change",
+        function () {
+
+            if (this.checked) {
+
+                document.body.classList.add(
+                    "dark-mode"
+                );
+
+                localStorage.setItem(
+                    "darkMode",
+                    "enabled"
+                );
+
+            } else {
+
+                document.body.classList.remove(
+                    "dark-mode"
+                );
+
+                localStorage.setItem(
+                    "darkMode",
+                    "disabled"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* ==============================
+       NOTIFICATIONS
+    ============================== */
+
+    const notificationToggle =
+        document.getElementById(
+            "notificationToggle"
+        );
+
+
+    if (
+        localStorage.getItem(
+            "notifications"
+        ) === "enabled"
+    ) {
+
+        notificationToggle.checked = true;
+
+    }
+
+
+    notificationToggle.addEventListener(
+        "change",
+        function () {
+
+            if (this.checked) {
+
+                localStorage.setItem(
+                    "notifications",
+                    "enabled"
+                );
+
+            } else {
+
+                localStorage.setItem(
+                    "notifications",
+                    "disabled"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* ==============================
+       OPEN CHANGE PASSWORD
+    ============================== */
+
+    function changePassword() {
+
+        document.getElementById(
+            "passwordModal"
+        ).classList.add("show");
+
+        document.getElementById(
+            "passwordMessage"
+        ).textContent = "";
+
+    }
+
+
+    /* ==============================
+       CLOSE CHANGE PASSWORD
+    ============================== */
+
+    function closePasswordModal() {
+
+        document.getElementById(
+            "passwordModal"
+        ).classList.remove("show");
+
+        document.getElementById(
+            "currentPassword"
+        ).value = "";
+
+        document.getElementById(
+            "newPassword"
+        ).value = "";
+
+        document.getElementById(
+            "confirmPassword"
+        ).value = "";
+
+        document.getElementById(
+            "passwordMessage"
+        ).textContent = "";
+
+    }
+
+
+    /* ==============================
+       UPDATE PASSWORD
+    ============================== */
+
+    async function updatePassword() {
+
+        const currentPassword =
+            document.getElementById(
+                "currentPassword"
+            ).value.trim();
+
+
+        const newPassword =
+            document.getElementById(
+                "newPassword"
+            ).value.trim();
+
+
+        const confirmPassword =
+            document.getElementById(
+                "confirmPassword"
+            ).value.trim();
+
+
+        const message =
+            document.getElementById(
+                "passwordMessage"
+            );
+
+
+        /* VALIDATION */
+
+        if (
+            !currentPassword ||
+            !newPassword ||
+            !confirmPassword
+        ) {
+
+            message.textContent =
+                "Please fill all password fields.";
+
+            message.className =
+                "password-message error";
+
+            return;
+
+        }
+
+
+        if (newPassword.length < 6) {
+
+            message.textContent =
+                "New password must contain at least 6 characters.";
+
+            message.className =
+                "password-message error";
+
+            return;
+
+        }
+
+
+        if (newPassword !== confirmPassword) {
+
+            message.textContent =
+                "New passwords do not match.";
+
+            message.className =
+                "password-message error";
+
+            return;
+
+        }
+
+
+        if (!user || !user.id) {
+
+            message.textContent =
+                "User session not found. Please login again.";
+
+            message.className =
+                "password-message error";
+
+            return;
+
+        }
+
+
+        /* SEND TO FLASK */
+
+        try {
+
+            const response = await fetch(
+                "/change-password",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        user_id: user.id,
+
+                        current_password:
+                            currentPassword,
+
+                        new_password:
+                            newPassword
+
+                    })
+                }
+            );
+
+
+            const data =
+                await response.json();
+
+
+            if (data.success) {
+
+                message.textContent =
+                    "Password updated successfully!";
+
+                message.className =
+                    "password-message success";
+
+
+                setTimeout(
+                    function () {
+
+                        closePasswordModal();
+
+                    },
+                    1500
+                );
+
+
+            } else {
+
+                message.textContent =
+                    data.message ||
+                    "Password update failed.";
+
+                message.className =
+                    "password-message error";
+
+            }
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            message.textContent =
+                "Something went wrong. Please try again.";
+
+            message.className =
+                "password-message error";
+
+        }
+
+    }
+
+
+    /* ==============================
+       LOGOUT
+    ============================== */
+
+    function logout() {
+
+        localStorage.removeItem(
+            "travelverseUser"
+        );
+
+        window.location.href =
+            "/login";
+
+    }
+
+</script>
+
+</body>
+
+</html>

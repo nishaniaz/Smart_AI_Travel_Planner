@@ -1,0 +1,1069 @@
+/* ==================================================
+   TRAVELVERSE AI
+   DESTINATIONS PAGE
+================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f5f8fc;
+    color: #172033;
+}
+
+
+/* ==================================================
+   NAVBAR
+================================================== */
+
+.navbar {
+    height: 74px;
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 55px;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    box-shadow:
+        0 4px 25px rgba(0, 0, 0, 0.07);
+
+    backdrop-filter: blur(15px);
+}
+
+
+.logo {
+    text-decoration: none;
+
+    font-size: 24px;
+    font-weight: 800;
+
+    color: #172033;
+}
+
+.logo span {
+    color: #19b7a5;
+}
+
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+
+.nav-links a {
+    text-decoration: none;
+
+    color: #68758a;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: all 0.3s ease;
+
+    position: relative;
+}
+
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: #19b7a5;
+
+    transition: 0.3s;
+}
+
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #19b7a5;
+}
+
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+.destinations-hero {
+
+    width: 92%;
+
+    min-height: 330px;
+
+    margin: 30px auto 0;
+
+    border-radius: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 55px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(5, 29, 48, 0.92),
+            rgba(10, 106, 112, 0.72),
+            rgba(25, 183, 165, 0.50)
+        ),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85");
+
+    background-size: cover;
+
+    background-position: center;
+
+    box-shadow:
+        0 20px 50px rgba(20, 55, 70, 0.20);
+}
+
+
+.destinations-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    right: -80px;
+    top: -90px;
+
+    background: rgba(255, 255, 255, 0.09);
+
+}
+
+
+.destinations-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    right: 150px;
+    bottom: -100px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+}
+
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 720px;
+
+    color: white;
+
+}
+
+
+.hero-small {
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    font-weight: 600;
+
+    margin-bottom: 15px;
+
+    opacity: 0.88;
+}
+
+
+.hero-content h1 {
+
+    font-size: 50px;
+
+    line-height: 1.12;
+
+    margin-bottom: 18px;
+
+    font-weight: 800;
+}
+
+
+.hero-content p {
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    max-width: 620px;
+
+    color: rgba(255,255,255,0.90);
+}
+
+
+.hero-content strong {
+
+    color: white;
+}
+
+
+/* ==================================================
+   SEARCH
+================================================== */
+
+.search-box {
+
+    width: 88%;
+
+    max-width: 1150px;
+
+    height: 72px;
+
+    margin: -36px auto 55px;
+
+    position: relative;
+
+    z-index: 20;
+}
+
+
+.search-box input {
+
+    width: 100%;
+
+    height: 72px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 20px;
+
+    background: white;
+
+    padding: 0 30px 0 65px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 15px;
+
+    color: #172033;
+
+    box-shadow:
+        0 15px 40px rgba(17, 42, 58, 0.14);
+
+    transition: 0.3s;
+}
+
+
+.search-box input::placeholder {
+
+    color: #9ba6b6;
+}
+
+
+.search-box input:focus {
+
+    box-shadow:
+        0 15px 45px rgba(25, 183, 165, 0.20);
+
+    transform: translateY(-2px);
+}
+
+
+.search-icon {
+
+    position: absolute;
+
+    left: 25px;
+
+    top: 22px;
+
+    font-size: 23px;
+
+    z-index: 2;
+}
+
+
+/* ==================================================
+   SECTION
+================================================== */
+
+.destinations-section {
+
+    width: 92%;
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding-bottom: 70px;
+}
+
+
+.section-heading {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+
+.section-heading small {
+
+    display: block;
+
+    color: #19a996;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 6px;
+}
+
+
+.section-heading h2 {
+
+    font-size: 31px;
+
+    font-weight: 800;
+
+    color: #172033;
+}
+
+
+.destination-count {
+
+    color: #7d899b;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    background: white;
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+}
+
+
+/* ==================================================
+   CATEGORY BUTTONS
+================================================== */
+
+.category-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 32px;
+}
+
+
+.category-buttons button {
+
+    border: 1px solid #dce4ec;
+
+    background: white;
+
+    color: #627086;
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: all 0.3s ease;
+}
+
+
+.category-buttons button:hover {
+
+    border-color: #19b7a5;
+
+    color: #19a996;
+
+    transform: translateY(-2px);
+}
+
+
+.category-buttons button.active {
+
+    background: #19b7a5;
+
+    color: white;
+
+    border-color: #19b7a5;
+
+    box-shadow:
+        0 8px 20px rgba(25, 183, 165, 0.22);
+}
+
+
+/* ==================================================
+   DESTINATION GRID
+================================================== */
+
+.destination-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 26px;
+}
+
+
+/* ==================================================
+   CARD
+================================================== */
+
+.place-card {
+
+    background: white;
+
+    border-radius: 23px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    box-shadow:
+        0 8px 28px rgba(25, 43, 61, 0.08);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+
+    animation: cardAppear 0.5s ease;
+}
+
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+.place-card:hover {
+
+    transform: translateY(-9px);
+
+    box-shadow:
+        0 22px 48px rgba(25, 43, 61, 0.15);
+}
+
+
+/* ==================================================
+   IMAGE
+================================================== */
+
+.place-image {
+
+    height: 245px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background-size: cover !important;
+
+    background-position: center !important;
+
+    transition: transform 0.5s ease;
+}
+
+
+.place-card:hover .place-image {
+
+    transform: scale(1.025);
+}
+
+
+.place-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.03) 65%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ==================================================
+   DESTINATION IMAGES
+================================================== */
+
+.place-image.goa {
+    background:
+        url("https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.ooty {
+    background:
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.munnar {
+    background:
+        url("https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.kodaikanal {
+    background:
+        url("https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.coorg {
+    background:
+        url("https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.wayanad {
+    background:
+        url("https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.pondicherry {
+    background:
+        url("https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.andaman {
+    background:
+        url("https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.varkala {
+    background:
+        url("https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.manali {
+    background:
+        url("https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.shimla {
+    background:
+        url("https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.darjeeling {
+    background:
+        url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.jaipur {
+    background:
+        url("https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.agra {
+    background:
+        url("https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.hampi {
+    background:
+        url("https://images.unsplash.com/photo-1600100397608-f010e75f7f4f?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.mysore {
+    background:
+        url("https://images.unsplash.com/photo-1600112356915-089abb8fc71d?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.varanasi {
+    background:
+        url("https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.mahabalipuram {
+    background:
+        url("https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.leh {
+    background:
+        url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.kashmir {
+    background:
+        url("https://images.unsplash.com/photo-1605540436563-5bca919ae766?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.paris {
+    background:
+        url("https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.dubai {
+    background:
+        url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.bali {
+    background:
+        url("https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.maldives {
+    background:
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.singapore {
+    background:
+        url("https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.tokyo {
+    background:
+        url("https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.switzerland {
+    background:
+        url("https://images.unsplash.com/photo-1531973576160-7125cd663d86?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.rome {
+    background:
+        url("https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.bangkok {
+    background:
+        url("https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=900&q=85");
+}
+
+.place-image.newyork {
+    background:
+        url("https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=900&q=85");
+}
+
+
+/* ==================================================
+   HEART BUTTON
+================================================== */
+
+.heart-btn {
+
+    position: absolute;
+
+    top: 16px;
+
+    right: 16px;
+
+    z-index: 5;
+
+    width: 45px;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    color: #ff5470;
+
+    font-size: 23px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.17);
+
+    transition: all 0.3s ease;
+}
+
+
+.heart-btn:hover {
+
+    transform: scale(1.13);
+
+    background: #fff0f3;
+}
+
+
+.heart-btn:active {
+
+    transform: scale(0.92);
+}
+
+
+/* ==================================================
+   COUNTRY
+================================================== */
+
+.country {
+
+    position: absolute;
+
+    left: 17px;
+
+    bottom: 17px;
+
+    z-index: 5;
+
+    background: rgba(255,255,255,0.95);
+
+    color: #26344a;
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.12);
+}
+
+
+/* ==================================================
+   CARD INFO
+================================================== */
+
+.place-info {
+
+    padding: 20px 21px 21px;
+}
+
+
+.place-info h3 {
+
+    color: #172033;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    margin-bottom: 8px;
+}
+
+
+.place-info p {
+
+    color: #748095;
+
+    font-size: 12.5px;
+
+    line-height: 1.6;
+
+    min-height: 40px;
+
+    margin-bottom: 13px;
+}
+
+
+.place-bottom {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding-top: 12px;
+
+    border-top: 1px solid #edf0f4;
+}
+
+
+.rating {
+
+    color: #e89b19;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.price {
+
+    color: #19a996;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* ==================================================
+   NO RESULTS
+================================================== */
+
+.no-results {
+
+    display: none;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    color: #6d788a;
+}
+
+
+.no-results div {
+
+    font-size: 50px;
+
+    margin-bottom: 15px;
+}
+
+
+.no-results h3 {
+
+    color: #26344a;
+
+    font-size: 21px;
+
+    margin-bottom: 8px;
+}
+
+
+.no-results p {
+
+    font-size: 13px;
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 1050px) {
+
+    .destination-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-content h1 {
+
+        font-size: 42px;
+    }
+
+    .navbar {
+
+        padding: 0 30px;
+    }
+
+}
+
+
+@media (max-width: 760px) {
+
+    .navbar {
+
+        height: auto;
+
+        min-height: 70px;
+
+        padding: 16px 20px;
+
+        flex-direction: column;
+
+        gap: 13px;
+    }
+
+
+    .nav-links {
+
+        gap: 14px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    .nav-links a {
+
+        font-size: 12px;
+    }
+
+
+    .destinations-hero {
+
+        width: 94%;
+
+        min-height: 290px;
+
+        padding: 35px 25px;
+
+        border-radius: 24px;
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 34px;
+    }
+
+
+    .hero-content p {
+
+        font-size: 14px;
+    }
+
+
+    .search-box {
+
+        width: 88%;
+
+        margin-top: -30px;
+    }
+
+
+    .destinations-section {
+
+        width: 94%;
+    }
+
+
+    .section-heading {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
+    .destination-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .hero-content h1 {
+
+        font-size: 29px;
+    }
+
+
+    .category-buttons {
+
+        gap: 7px;
+    }
+
+
+    .category-buttons button {
+
+        padding: 8px 12px;
+
+        font-size: 11px;
+    }
+
+
+    .place-image {
+
+        height: 220px;
+    }
+
+}

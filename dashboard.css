@@ -1,0 +1,316 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    display:flex;
+    background:#F4F8FC;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:linear-gradient(180deg,#2563EB,#1D4ED8);
+    color:white;
+    position:fixed;
+    left:0;
+    top:0;
+    padding:30px 20px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:50px;
+    text-align:center;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li{
+    padding:15px;
+    margin-bottom:12px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+    font-size:17px;
+}
+
+.sidebar ul li i{
+    width:30px;
+}
+
+.sidebar ul li:hover,
+.sidebar ul .active{
+    background:white;
+    color:#2563EB;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-left:260px;
+    width:100%;
+    padding:35px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.topbar h1{
+    font-size:35px;
+    color:#1E293B;
+}
+
+.topbar p{
+    color:#64748B;
+    margin-top:8px;
+}
+
+.top-icons i{
+    font-size:28px;
+    margin-left:20px;
+    color:#2563EB;
+    cursor:pointer;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box{
+    display:flex;
+    gap:15px;
+    margin-bottom:35px;
+}
+
+.search-box input{
+    flex:1;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    font-size:16px;
+}
+
+.search-box button{
+    padding:16px 30px;
+    border:none;
+    background:#2563EB;
+    color:white;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.search-box button:hover{
+    background:#1D4ED8;
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card i{
+    font-size:45px;
+    color:#2563EB;
+    margin-bottom:20px;
+}
+
+.card h2{
+    color:#1E293B;
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#64748B;
+}
+/* ================= SECOND ROW ================= */
+
+.dashboard-grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:25px;
+
+margin-top:35px;
+
+}
+
+.ai-box,
+.packing-box,
+.recent-box,
+.weather-box{
+
+background:white;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 10px 20px rgba(0,0,0,.1);
+
+}
+
+.ai-box h2,
+.packing-box h2,
+.recent-box h2,
+.weather-box h2{
+
+margin-bottom:20px;
+
+color:#2563EB;
+
+}
+
+.ai-box ul{
+
+padding-left:20px;
+
+line-height:2;
+
+}
+
+.packing-box label{
+
+display:block;
+
+margin-bottom:15px;
+
+font-size:17px;
+
+}
+
+.recent-box table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+.recent-box th,
+.recent-box td{
+
+padding:15px;
+
+border-bottom:1px solid #ddd;
+
+text-align:left;
+
+}
+
+.weather-box{
+
+text-align:center;
+
+}
+
+.weather-box h1{
+
+font-size:60px;
+
+margin:20px 0;
+
+color:#2563EB;
+
+}
+/* ============================= */
+/* QUICK ACTIONS                 */
+/* ============================= */
+
+.quick-actions-card {
+    padding: 30px;
+}
+
+.quick-actions-card .section-title {
+    margin-bottom: 25px;
+    font-size: 25px;
+    font-weight: 700;
+    color: #2864e8;
+}
+
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.quick-action-btn {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    background: #f5f8ff;
+    border: 1px solid #dce5f7;
+    border-radius: 10px;
+
+    color: #2864e8;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+
+    box-sizing: border-box;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.quick-action-btn:hover {
+    background: #2864e8;
+    color: white;
+    border-color: #2864e8;
+    transform: translateX(4px);
+    box-shadow: 0 5px 12px rgba(40, 100, 232, 0.18);
+}
+
+.action-icon {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.quick-action-btn span:last-child {
+    flex: 1;
+}

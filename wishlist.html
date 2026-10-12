@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Wishlist | TravelVerse AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/wishlist.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <span>🌍</span> TravelVerse <b>AI</b>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/dashboard">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="/destinations">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Destinations</span>
+            </a>
+
+            <a href="/planner">
+                <i class="fa-solid fa-route"></i>
+                <span>AI Planner</span>
+            </a>
+
+            <a href="/profile">
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <i class="fa-solid fa-heart"></i>
+                YOUR SAVED DESTINATIONS
+            </div>
+
+            <h1>
+                My Wishlist
+                <span>❤️</span>
+            </h1>
+
+            <p>
+                Your favourite travel destinations, all in one place.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= WISHLIST SECTION ================= -->
+
+    <main class="wishlist-section">
+
+        <div class="section-heading">
+
+            <div>
+                <p class="section-label">
+                    <i class="fa-solid fa-compass"></i>
+                    TRAVEL COLLECTION
+                </p>
+
+                <h2>
+                    Saved Destinations
+                </h2>
+            </div>
+
+            <div class="wishlist-count" id="wishlistCount">
+                0 Saved
+            </div>
+
+        </div>
+
+
+        <!-- DYNAMIC WISHLIST -->
+
+        <div id="wishlistContainer" class="wishlist-grid">
+
+            <!-- Wishlist cards will appear here -->
+
+        </div>
+
+
+        <!-- EMPTY WISHLIST -->
+
+        <div id="emptyWishlist" class="empty-wishlist">
+
+            <div class="empty-icon">
+                💔
+            </div>
+
+            <h3>
+                Your wishlist is empty
+            </h3>
+
+            <p>
+                Start exploring beautiful destinations and save your favourites!
+            </p>
+
+            <a href="/destinations" class="explore-btn">
+                <i class="fa-solid fa-earth-americas"></i>
+                Explore Destinations
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= SCRIPT ================= -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const user = JSON.parse(
+                localStorage.getItem("travelverseUser")
+            );
+
+            if (!user) {
+
+                alert("Please login first! 🔐");
+
+                window.location.href = "/login";
+
+                return;
+            }
+
+            loadWishlist(user.id);
+
+        });
+
+
+        /* ==========================================
+           GET DESTINATION ICON
+           ========================================== */
+
+        function getDestinationIcon(destination) {
+
+            const name = destination.toLowerCase();
+
+            if (name.includes("goa")) {
+                return "🏖️";
+            }
+
+            if (name.includes("ooty")) {
+                return "🏔️";
+            }
+
+            if (name.includes("manali")) {
+                return "🏔️";
+            }
+
+            if (name.includes("kerala")) {
+                return "🌴";
+            }
+
+            if (name.includes("mumbai")) {
+                return "🌆";
+            }
+
+            if (name.includes("delhi")) {
+                return "🏛️";
+            }
+
+            if (name.includes("jaipur")) {
+                return "🏰";
+            }
+
+            if (name.includes("paris")) {
+                return "🗼";
+            }
+
+            if (name.includes("dubai")) {
+                return "🏙️";
+            }
+
+            if (name.includes("bali")) {
+                return "🌴";
+            }
+
+            if (name.includes("maldives")) {
+                return "🏝️";
+            }
+
+            return "🌍";
+        }
+
+
+        /* ==========================================
+           GET DESTINATION TYPE
+           ========================================== */
+
+        function getDestinationType(destination) {
+
+            const name = destination.toLowerCase();
+
+            if (
+                name.includes("goa") ||
+                name.includes("maldives") ||
+                name.includes("bali")
+            ) {
+                return "beach";
+            }
+
+            if (
+                name.includes("ooty") ||
+                name.includes("manali") ||
+                name.includes("kerala")
+            ) {
+                return "nature";
+            }
+
+            if (
+                name.includes("paris") ||
+                name.includes("dubai") ||
+                name.includes("mumbai")
+            ) {
+                return "city";
+            }
+
+            return "travel";
+        }
+
+
+        /* ==========================================
+           LOAD WISHLIST
+           ========================================== */
+
+        async function loadWishlist(userId) {
+
+            try {
+
+                const response = await fetch(
+                    "/wishlist?user_id=" + userId
+                );
+
+                const data = await response.json();
+
+                const container =
+                    document.getElementById("wishlistContainer");
+
+                const emptyWishlist =
+                    document.getElementById("emptyWishlist");
+
+                const wishlistCount =
+                    document.getElementById("wishlistCount");
+
+
+                if (data.success && data.wishlist.length > 0) {
+
+                    emptyWishlist.style.display = "none";
+
+                    container.innerHTML = "";
+
+                    wishlistCount.textContent =
+                        data.wishlist.length +
+                        (data.wishlist.length === 1 ? " Saved" : " Saved");
+
+
+                    data.wishlist.forEach(function (item) {
+
+                        const card =
+                            document.createElement("div");
+
+                        card.className = "wishlist-card";
+
+
+                        const icon =
+                            getDestinationIcon(item.destination);
+
+                        const type =
+                            getDestinationType(item.destination);
+
+
+                        card.innerHTML = `
+
+                            <div class="destination-cover ${type}">
+
+                                <div class="cover-overlay"></div>
+
+                                <div class="destination-icon">
+                                    ${icon}
+                                </div>
+
+                                <div class="heart-badge">
+                                    ❤️
+                                </div>
+
+                                <div class="saved-badge">
+                                    <i class="fa-solid fa-bookmark"></i>
+                                    Saved
+                                </div>
+
+                            </div>
+
+
+                            <div class="wishlist-content">
+
+                                <div class="destination-category">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    Travel Destination
+                                </div>
+
+                                <h3>
+                                    ${item.destination}
+                                </h3>
+
+                                <p class="wishlist-description">
+                                    <i class="fa-solid fa-plane-departure"></i>
+                                    Ready for your next adventure
+                                </p>
+
+
+                                <div class="card-footer">
+
+                                    <a
+                                        href="/destinations"
+                                        class="view-btn">
+
+                                        <i class="fa-solid fa-compass"></i>
+                                        Explore
+
+                                    </a>
+
+
+                                    <button
+                                        class="remove-btn"
+                                        onclick="removeWishlist(${item.id})">
+
+                                        <i class="fa-solid fa-trash"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        `;
+
+
+                        container.appendChild(card);
+
+                    });
+
+                } else {
+
+                    container.innerHTML = "";
+
+                    emptyWishlist.style.display = "block";
+
+                    wishlistCount.textContent = "0 Saved";
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Wishlist loading error:",
+                    error
+                );
+
+                alert("Unable to load wishlist.");
+
+            }
+
+        }
+
+
+        /* ==========================================
+           REMOVE WISHLIST
+           ========================================== */
+
+        async function removeWishlist(wishlistId) {
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/wishlist/" + wishlistId,
+                        {
+                            method: "DELETE"
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (data.success) {
+
+                    alert("Removed from wishlist 🗑️");
+
+
+                    const user =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "travelverseUser"
+                            )
+                        );
+
+
+                    loadWishlist(user.id);
+
+                } else {
+
+                    alert(
+                        data.message ||
+                        "Unable to remove."
+                    );
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Unable to connect to server."
+                );
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

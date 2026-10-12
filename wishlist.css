@@ -1,0 +1,737 @@
+/* =========================================
+   TRAVELVERSE AI - WISHLIST
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(
+        135deg,
+        #eef4ff 0%,
+        #f8f7ff 50%,
+        #eef8ff 100%
+    );
+    color: #172554;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   NAVBAR
+   ========================================= */
+
+.navbar {
+    height: 72px;
+    background: rgba(255, 255, 255, 0.97);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 55px;
+
+    box-shadow: 0 4px 18px rgba(30, 64, 175, 0.08);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+/* LOGO */
+
+.logo {
+    font-size: 25px;
+    font-weight: 700;
+    color: #4f46e5;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.logo b {
+    color: #2563eb;
+}
+
+
+/* NAV LINKS */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+
+    color: #27345f;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    transition: all 0.2s ease;
+}
+
+.nav-links a i {
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.hero {
+    padding: 58px 25px 55px;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(59, 130, 246, 0.13),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(124, 58, 237, 0.12),
+            transparent 35%
+        );
+}
+
+.hero-content {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+
+/* HERO BADGE */
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    background: #e0e7ff;
+    color: #4f46e5;
+
+    padding: 8px 18px;
+
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+
+    margin-bottom: 16px;
+}
+
+.hero-badge i {
+    color: #ec4899;
+}
+
+
+/* HERO TITLE */
+
+.hero h1 {
+    font-size: 43px;
+    font-weight: 800;
+
+    color: #172554;
+
+    margin-bottom: 10px;
+}
+
+.hero h1 span {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+
+/* HERO DESCRIPTION */
+
+.hero p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+
+/* =========================================
+   MAIN SECTION
+   ========================================= */
+
+.wishlist-section {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    padding: 0 30px 70px;
+}
+
+
+/* =========================================
+   SECTION HEADING
+   ========================================= */
+
+.section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.section-label {
+    color: #6366f1;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 5px;
+}
+
+.section-label i {
+    margin-right: 5px;
+}
+
+.section-heading h2 {
+    font-size: 27px;
+    font-weight: 750;
+    color: #172554;
+}
+
+
+/* COUNT */
+
+.wishlist-count {
+    background: white;
+
+    color: #2563eb;
+
+    padding: 9px 17px;
+
+    border-radius: 25px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow: 0 5px 18px rgba(37, 99, 235, 0.09);
+
+    border: 1px solid #e2e8f0;
+}
+
+
+/* =========================================
+   WISHLIST GRID
+   ========================================= */
+
+.wishlist-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 25px;
+}
+
+
+/* =========================================
+   WISHLIST CARD
+   ========================================= */
+
+.wishlist-card {
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    border: 1px solid #e7ebf3;
+
+    box-shadow:
+        0 10px 30px rgba(30, 64, 175, 0.09);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.wishlist-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 18px 42px rgba(37, 99, 235, 0.16);
+}
+
+
+/* =========================================
+   DESTINATION COVER
+   ========================================= */
+
+.destination-cover {
+    height: 190px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* BEACH */
+
+.destination-cover.beach {
+    background:
+        linear-gradient(
+            135deg,
+            #38bdf8,
+            #2563eb
+        );
+}
+
+
+/* NATURE */
+
+.destination-cover.nature {
+    background:
+        linear-gradient(
+            135deg,
+            #34d399,
+            #059669
+        );
+}
+
+
+/* CITY */
+
+.destination-cover.city {
+    background:
+        linear-gradient(
+            135deg,
+            #818cf8,
+            #7c3aed
+        );
+}
+
+
+/* DEFAULT */
+
+.destination-cover.travel {
+    background:
+        linear-gradient(
+            135deg,
+            #60a5fa,
+            #4f46e5
+        );
+}
+
+
+/* COVER PATTERN */
+
+.cover-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,255,255,0.25),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255,255,255,0.18),
+            transparent 30%
+        );
+}
+
+
+/* DESTINATION ICON */
+
+.destination-icon {
+    position: relative;
+    z-index: 2;
+
+    font-size: 72px;
+
+    filter:
+        drop-shadow(
+            0 10px 10px rgba(0,0,0,0.18)
+        );
+
+    transition: transform 0.3s ease;
+}
+
+.wishlist-card:hover .destination-icon {
+    transform: scale(1.12) rotate(2deg);
+}
+
+
+/* =========================================
+   HEART
+   ========================================= */
+
+.heart-badge {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    width: 43px;
+    height: 43px;
+
+    background: rgba(255,255,255,0.96);
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    box-shadow:
+        0 6px 16px rgba(0,0,0,0.15);
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   SAVED BADGE
+   ========================================= */
+
+.saved-badge {
+    position: absolute;
+
+    left: 15px;
+    top: 15px;
+
+    background: rgba(255,255,255,0.95);
+
+    color: #2563eb;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    z-index: 5;
+
+    box-shadow:
+        0 5px 14px rgba(0,0,0,0.12);
+}
+
+.saved-badge i {
+    margin-right: 4px;
+}
+
+
+/* =========================================
+   CARD CONTENT
+   ========================================= */
+
+.wishlist-content {
+    padding: 22px;
+}
+
+
+/* CATEGORY */
+
+.destination-category {
+    color: #6366f1;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 7px;
+}
+
+.destination-category i {
+    margin-right: 4px;
+}
+
+
+/* DESTINATION NAME */
+
+.wishlist-content h3 {
+    font-size: 25px;
+
+    font-weight: 750;
+
+    color: #172554;
+
+    margin-bottom: 8px;
+}
+
+
+/* DESCRIPTION */
+
+.wishlist-description {
+    color: #64748b;
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.wishlist-description i {
+    color: #2563eb;
+}
+
+
+/* =========================================
+   CARD FOOTER
+   ========================================= */
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* EXPLORE BUTTON */
+
+.view-btn {
+    flex: 1;
+
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 11px 15px;
+
+    background: #2563eb;
+
+    color: white;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+.view-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+}
+
+
+/* REMOVE BUTTON */
+
+.remove-btn {
+    width: 43px;
+    height: 43px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #fff1f2;
+
+    color: #e11d48;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+    background: #ffe4e6;
+
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   EMPTY WISHLIST
+   ========================================= */
+
+.empty-wishlist {
+    display: none;
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 65px 25px;
+
+    text-align: center;
+
+    border: 1px solid #e7ebf3;
+
+    box-shadow:
+        0 10px 30px rgba(30, 64, 175, 0.08);
+}
+
+
+/* EMPTY ICON */
+
+.empty-icon {
+    font-size: 65px;
+
+    margin-bottom: 15px;
+}
+
+
+/* EMPTY TITLE */
+
+.empty-wishlist h3 {
+    color: #172554;
+
+    font-size: 24px;
+
+    margin-bottom: 9px;
+}
+
+
+/* EMPTY TEXT */
+
+.empty-wishlist p {
+    color: #64748b;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+
+/* EXPLORE */
+
+.explore-btn {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 8px;
+
+    text-decoration: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+.explore-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 0 25px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .nav-links a span {
+        display: none;
+    }
+
+    .wishlist-section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+        height: auto;
+
+        padding: 18px;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .nav-links {
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 20px;
+    }
+
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .wishlist-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

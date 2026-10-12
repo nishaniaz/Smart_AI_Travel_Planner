@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | TravelVerse AI</title>
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        🌍 TravelVerse AI
+    </div>
+
+
+    <ul>
+
+        <!-- Dashboard -->
+
+        <li class="active"
+            onclick="window.location.href='/dashboard'"
+            style="cursor:pointer;">
+
+            <i class="fa-solid fa-house"></i>
+
+            Dashboard
+
+        </li>
+
+
+        <!-- Destinations -->
+
+        <li onclick="window.location.href='/destinations'"
+            style="cursor:pointer;">
+
+            <i class="fa-solid fa-map-location-dot"></i>
+
+            Destinations
+
+        </li>
+
+
+        <!-- AI Planner -->
+
+        <li onclick="window.location.href='/planner'"
+            style="cursor:pointer;">
+
+            <i class="fa-solid fa-route"></i>
+
+            AI Planner
+
+        </li>
+
+
+        <!-- Wishlist -->
+
+        <li onclick="window.location.href='/wishlist'"
+            style="cursor:pointer;">
+
+            <i class="fa-solid fa-heart"></i>
+
+            Wishlist
+
+        </li>
+
+
+        
+
+        <!-- Profile -->
+
+        <li onclick="window.location.href='/profile'"
+            style="cursor:pointer;">
+
+            <i class="fa-solid fa-user"></i>
+
+            Profile
+
+        </li>
+
+
+        <!-- Settings -->
+
+        <li>
+    <a href="/settings">
+        <i class="fa-solid fa-gear"></i>
+        <span>Settings</span>
+    </a>
+</li>
+
+        </li>
+
+
+        <!-- Logout -->
+
+        <li onclick="logoutUser()"
+            style="cursor:pointer;">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </li>
+
+    </ul>
+
+</div>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<div class="main">
+
+
+    <!-- =================================================
+         TOP BAR
+    ================================================== -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h1>
+                Welcome back,
+                <span id="userName">User</span>!
+            </h1>
+
+            <p>
+                Ready for your next adventure?
+            </p>
+
+        </div>
+
+
+        <div class="top-icons">
+
+            <i class="fa-solid fa-bell"></i>
+
+            <i class="fa-solid fa-user-circle"
+               onclick="window.location.href='/profile'"
+               style="cursor:pointer;">
+            </i>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         SEARCH
+    ================================================== -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="destinationSearch"
+            placeholder="Search destinations...">
+
+        <button onclick="searchDestination()">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            Search
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =================================================
+         STATISTICS CARDS
+    ================================================== -->
+
+    <div class="cards">
+
+
+        <!-- Upcoming Trips -->
+
+        <div class="card">
+
+            <i class="fa-solid fa-plane"></i>
+
+            <h2 id="upcomingTrips">
+                0
+            </h2>
+
+            <p>
+                Upcoming Trips
+            </p>
+
+        </div>
+
+
+
+        <!-- Total Budget -->
+
+        <div class="card">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            <h2 id="totalBudget">
+                ₹0
+            </h2>
+
+            <p>
+                Total Budget
+            </p>
+
+        </div>
+
+
+
+        <!-- Weather -->
+
+        <div class="card">
+
+            <i class="fa-solid fa-cloud-sun"></i>
+
+            <h2>
+                28°C
+            </h2>
+
+            <p>
+                Weather
+            </p>
+
+        </div>
+
+
+
+        <!-- Wishlist -->
+
+        <div class="card"
+             onclick="window.location.href='/wishlist'"
+             style="cursor:pointer;">
+
+            <i class="fa-solid fa-heart"></i>
+
+            <h2 id="wishlistCount">
+                0
+            </h2>
+
+            <p>
+                Wishlist
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         AI SUGGESTIONS + PACKING
+    ================================================== -->
+
+    <div class="dashboard-grid">
+
+
+        <!-- AI Suggestions -->
+
+        <div class="ai-box">
+
+            <h2>
+                 AI Suggestions
+            </h2>
+
+            <ul>
+
+                <li>
+                    Discover destinations based on your budget.
+                </li>
+
+                <li>
+                    Use AI Planner to create a personalized trip.
+                </li>
+
+                <li>
+                    Add your favourite destinations to Wishlist.
+                </li>
+
+                <li>
+                    Plan your trip before booking.
+                </li>
+
+                <li>
+                    Check weather before travelling.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- Packing Checklist -->
+
+        <div class="packing-box">
+
+            <h2>
+                 Packing Checklist
+            </h2>
+
+
+            <label>
+
+                <input type="checkbox">
+
+                Passport
+
+            </label>
+
+
+            <label>
+
+                <input type="checkbox">
+
+                Tickets
+
+            </label>
+
+
+            <label>
+
+                <input type="checkbox">
+
+                Clothes
+
+            </label>
+
+
+            <label>
+
+                <input type="checkbox">
+
+                Camera
+
+            </label>
+
+
+            <label>
+
+                <input type="checkbox">
+
+                Charger
+
+            </label>
+
+
+            <label>
+
+                <input type="checkbox">
+
+                Medicines
+
+            </label>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         RECENT DESTINATIONS + WEATHER
+    ================================================== -->
+
+    <div class="dashboard-grid">
+
+
+        <!-- Recent Destinations -->
+
+        <div class="recent-box">
+
+            <h2>
+                📍 Recent Destinations
+            </h2>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Place
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <!-- Dynamic data comes here -->
+
+                <tbody id="recentDestinations">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- Weather -->
+
+        <div class="weather-box">
+
+            <h2>
+                 Weather
+            </h2>
+
+            <h1>
+                28°C
+            </h1>
+
+            <p>
+                Sunny
+            </p>
+
+            <p>
+                Humidity : 55%
+            </p>
+
+            <p>
+                Wind : 12 km/h
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+     <!-- QUICK ACTIONS -->
+<div class="dashboard-card quick-actions-card">
+
+    <h2 class="section-title">
+        ⚡ Quick Actions
+    </h2>
+
+    <div class="quick-actions">
+
+        <a href="/planner" class="quick-action-btn">
+            <span class="action-icon"></span>
+            <span>Create New Trip</span>
+        </a>
+
+        <a href="/hotel-booking" class="quick-action-btn">
+            <span class="action-icon"></span>
+            <span>Book Hotel</span>
+        </a>
+
+        <a href="/booking" class="quick-action-btn">
+            <span class="action-icon"></span>
+            <span>Flight Booking</span>
+        </a>
+
+        <a href="/planner" class="quick-action-btn">
+            <span class="action-icon"></span>
+            <span>Generate AI Trip</span>
+        </a>
+
+    </div>
+
+</div>
+        <!-- Travel Tips -->
+
+        <div class="packing-box">
+
+            <h2>
+                ⭐ Travel Tips
+            </h2>
+
+            <ul>
+
+                <li>
+                    ✔ Keep digital copies of documents.
+                </li>
+
+                <li>
+                    ✔ Carry a power bank.
+                </li>
+
+                <li>
+                    ✔ Keep emergency cash.
+                </li>
+
+                <li>
+                    ✔ Download offline maps.
+                </li>
+
+                <li>
+                    ✔ Check weather forecast.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   SEARCH DESTINATION
+===================================================== */
+
+function searchDestination() {
+
+    const searchInput =
+        document.getElementById(
+            "destinationSearch"
+        );
+
+    const value =
+        searchInput.value.trim();
+
+
+    if (value === "") {
+
+        return;
+
+    }
+
+
+    window.location.href =
+        "/destinations";
+
+}
+
+
+
+/* =====================================================
+   COMING SOON
+===================================================== */
+
+function showComingSoon(feature) {
+
+    alert(
+        feature +
+        " feature is coming soon! ✈️"
+    );
+
+}
+
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logoutUser() {
+
+    localStorage.removeItem(
+        "travelverseUser"
+    );
+
+    window.location.href =
+        "/login";
+
+}
+
+
+
+/* =====================================================
+   LOAD DASHBOARD
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* ---------------------------------------------
+           GET LOGGED-IN USER
+        --------------------------------------------- */
+
+        const userData =
+            localStorage.getItem(
+                "travelverseUser"
+            );
+
+
+        if (!userData) {
+
+            window.location.href =
+                "/login";
+
+            return;
+
+        }
+
+
+        let user;
+
+
+        try {
+
+            user =
+                JSON.parse(userData);
+
+        } catch (error) {
+
+            console.error(
+                "Invalid user data:",
+                error
+            );
+
+            localStorage.removeItem(
+                "travelverseUser"
+            );
+
+            window.location.href =
+                "/login";
+
+            return;
+
+        }
+
+
+
+        /* ---------------------------------------------
+           USER NAME
+        --------------------------------------------- */
+
+        const userName =
+            document.getElementById(
+                "userName"
+            );
+
+
+        if (
+            userName &&
+            user.name
+        ) {
+
+            userName.textContent =
+                user.name;
+
+        }
+
+
+
+        /* ---------------------------------------------
+           FETCH DASHBOARD DATA
+        --------------------------------------------- */
+
+        fetch(
+            "/dashboard-data?user_id=" +
+            encodeURIComponent(user.id)
+        )
+
+        .then(function (response) {
+
+            return response.json();
+
+        })
+
+        .then(function (data) {
+
+
+            if (!data.success) {
+
+                console.error(
+                    "Dashboard error:",
+                    data.message
+                );
+
+                return;
+
+            }
+
+
+
+            /* -----------------------------------------
+               TRIP COUNT
+            ----------------------------------------- */
+
+            const upcomingTrips =
+                document.getElementById(
+                    "upcomingTrips"
+                );
+
+
+            if (upcomingTrips) {
+
+                upcomingTrips.textContent =
+                    data.trip_count || 0;
+
+            }
+
+
+
+            /* -----------------------------------------
+               TOTAL BUDGET
+            ----------------------------------------- */
+
+            const totalBudget =
+                document.getElementById(
+                    "totalBudget"
+                );
+
+
+            if (totalBudget) {
+
+                const budget =
+                    Number(
+                        data.total_budget || 0
+                    );
+
+
+                totalBudget.textContent =
+                    "₹" +
+                    budget.toLocaleString(
+                        "en-IN"
+                    );
+
+            }
+
+
+
+            /* -----------------------------------------
+               WISHLIST COUNT
+            ----------------------------------------- */
+
+            const wishlistCount =
+                document.getElementById(
+                    "wishlistCount"
+                );
+
+
+            if (wishlistCount) {
+
+                wishlistCount.textContent =
+                    data.wishlist_count || 0;
+
+            }
+
+
+
+            /* -----------------------------------------
+               RECENT DESTINATIONS
+            ----------------------------------------- */
+
+            const recentDestinations =
+                document.getElementById(
+                    "recentDestinations"
+                );
+
+
+            if (
+                recentDestinations &&
+                Array.isArray(data.trips)
+            ) {
+
+
+                recentDestinations.innerHTML =
+                    "";
+
+
+                if (
+                    data.trips.length === 0
+                ) {
+
+                    recentDestinations.innerHTML = `
+
+                        <tr>
+
+                            <td colspan="2"
+                                style="text-align:center;">
+
+                                No trips planned yet ✈️
+
+                            </td>
+
+                        </tr>
+
+                    `;
+
+                } else {
+
+
+                    data.trips
+                        .slice(0, 4)
+                        .forEach(
+                            function (trip) {
+
+
+                                const row =
+                                    document.createElement(
+                                        "tr"
+                                    );
+
+
+                                row.innerHTML = `
+
+                                    <td>
+                                        ${trip.destination}
+                                    </td>
+
+                                    <td>
+                                        Planned
+                                    </td>
+
+                                `;
+
+
+                                recentDestinations
+                                    .appendChild(
+                                        row
+                                    );
+
+                            }
+                        );
+
+                }
+
+            }
+
+        })
+
+        .catch(function (error) {
+
+            console.error(
+                "Dashboard data error:",
+                error
+            );
+
+        });
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Hotel Booking Confirmed | TravelVerse AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/hotel-confirmation.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="confirmation-page">
+
+    <div class="confirmation-card">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h1>
+            Hotel Booking Confirmed!
+        </h1>
+
+        <p class="subtitle">
+            Your hotel reservation has been successfully created.
+        </p>
+
+
+        <div class="booking-id">
+            Booking ID:
+            <strong id="bookingId">
+                --
+            </strong>
+        </div>
+
+
+        <div class="hotel-summary">
+
+            <h2 id="hotelName">
+                --
+            </h2>
+
+            <p id="location">
+                📍 --
+            </p>
+
+            <div class="details">
+
+                <div>
+                    <span>Check-in</span>
+                    <strong id="checkIn">--</strong>
+                </div>
+
+                <div>
+                    <span>Check-out</span>
+                    <strong id="checkOut">--</strong>
+                </div>
+
+                <div>
+                    <span>Guests</span>
+                    <strong id="guests">--</strong>
+                </div>
+
+                <div>
+                    <span>Rooms</span>
+                    <strong id="rooms">--</strong>
+                </div>
+
+                <div>
+                    <span>Room Type</span>
+                    <strong id="roomType">--</strong>
+                </div>
+
+                <div>
+                    <span>Nights</span>
+                    <strong id="nights">--</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="total-box">
+
+            <span>
+                Total Amount
+            </span>
+
+            <strong id="totalAmount">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <button
+            onclick="goToDashboard()"
+            class="dashboard-btn">
+
+            🏠 Back to Dashboard
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const booking =
+            JSON.parse(
+                localStorage.getItem(
+                    "lastHotelBooking"
+                )
+            );
+
+
+        if (!booking) {
+
+            window.location.href =
+                "/hotel-booking";
+
+            return;
+
+        }
+
+
+        document.getElementById(
+            "bookingId"
+        ).textContent =
+            booking.booking_id;
+
+
+        document.getElementById(
+            "hotelName"
+        ).textContent =
+            booking.hotel_name;
+
+
+        document.getElementById(
+            "location"
+        ).textContent =
+            "📍 " + booking.location;
+
+
+        document.getElementById(
+            "checkIn"
+        ).textContent =
+            booking.check_in;
+
+
+        document.getElementById(
+            "checkOut"
+        ).textContent =
+            booking.check_out;
+
+
+        document.getElementById(
+            "guests"
+        ).textContent =
+            booking.guests;
+
+
+        document.getElementById(
+            "rooms"
+        ).textContent =
+            booking.rooms;
+
+
+        document.getElementById(
+            "roomType"
+        ).textContent =
+            booking.room_type;
+
+
+        document.getElementById(
+            "nights"
+        ).textContent =
+            booking.nights;
+
+
+        document.getElementById(
+            "totalAmount"
+        ).textContent =
+            "₹" +
+            Number(
+                booking.total_amount
+            ).toLocaleString("en-IN");
+
+    });
+
+
+function goToDashboard() {
+
+    window.location.href =
+        "/dashboard";
+
+}
+
+</script>
+
+</body>
+
+</html>

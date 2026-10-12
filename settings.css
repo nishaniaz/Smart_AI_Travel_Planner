@@ -1,0 +1,699 @@
+/* ================================
+   TRAVELVERSE AI - SETTINGS
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    transition: 0.3s ease;
+}
+
+/* ================================
+   MAIN PAGE
+================================ */
+
+.settings-page {
+    min-height: 100vh;
+    padding: 40px 7%;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.settings-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #5b21b6;
+}
+
+.settings-header p {
+    margin-top: 5px;
+    color: #777;
+    font-size: 14px;
+}
+
+.back-btn {
+    text-decoration: none;
+    background: #5b21b6;
+    color: white;
+    padding: 11px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #4c1d95;
+    transform: translateY(-2px);
+}
+
+/* ================================
+   SETTINGS CONTAINER
+================================ */
+
+.settings-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+/* ================================
+   SETTINGS CARD
+================================ */
+
+.settings-card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+
+    transition: 0.3s ease;
+}
+
+.settings-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
+}
+
+/* ================================
+   ICON
+================================ */
+
+.card-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f0e7ff;
+    border-radius: 14px;
+
+    font-size: 25px;
+    flex-shrink: 0;
+}
+
+/* ================================
+   CONTENT
+================================ */
+
+.card-content {
+    flex: 1;
+}
+
+.card-content h2 {
+    font-size: 19px;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.card-content p {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 18px;
+}
+
+/* ================================
+   ACCOUNT INFO
+================================ */
+
+.account-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.account-info div {
+    background: #f8f8fb;
+    padding: 14px;
+    border-radius: 10px;
+}
+
+.account-info span {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 4px;
+}
+
+.account-info strong {
+    font-size: 14px;
+    color: #333;
+    word-break: break-word;
+}
+
+/* ================================
+   TOGGLE
+================================ */
+
+.toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+
+    cursor: pointer;
+}
+
+.toggle-row input {
+    display: none;
+}
+
+.toggle {
+    width: 48px;
+    height: 26px;
+
+    background: #d1d5db;
+
+    border-radius: 30px;
+
+    position: relative;
+
+    transition: 0.3s ease;
+}
+
+.toggle::after {
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    top: 3px;
+    left: 4px;
+
+    transition: 0.3s ease;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-row input:checked + .toggle {
+    background: #5b21b6;
+}
+
+.toggle-row input:checked + .toggle::after {
+    transform: translateX(20px);
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.action-btn,
+.logout-btn {
+    border: none;
+    padding: 11px 20px;
+    border-radius: 9px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.action-btn {
+    background: #5b21b6;
+    color: white;
+}
+
+.action-btn:hover {
+    background: #4c1d95;
+    transform: translateY(-2px);
+}
+
+.logout-btn {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.logout-btn:hover {
+    background: #fecaca;
+    transform: translateY(-2px);
+}
+
+/* ================================
+   LOGOUT CARD
+================================ */
+
+.logout-card {
+    border-left: 4px solid #dc2626;
+}
+
+/* ================================
+   DARK MODE
+================================ */
+
+body.dark-mode {
+    background: #111827;
+    color: #f3f4f6;
+}
+
+body.dark-mode .settings-header h1 {
+    color: #c084fc;
+}
+
+body.dark-mode .settings-header p {
+    color: #9ca3af;
+}
+
+body.dark-mode .settings-card {
+    background: #1f2937;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode .card-content h2 {
+    color: #f3f4f6;
+}
+
+body.dark-mode .card-content p {
+    color: #9ca3af;
+}
+
+body.dark-mode .card-icon {
+    background: #312e81;
+}
+
+body.dark-mode .account-info div {
+    background: #374151;
+}
+
+body.dark-mode .account-info span {
+    color: #9ca3af;
+}
+
+body.dark-mode .account-info strong {
+    color: #f3f4f6;
+}
+
+body.dark-mode .toggle-row {
+    color: #e5e7eb;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+
+    .settings-page {
+        padding: 25px 5%;
+    }
+
+    .settings-header {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .settings-header h1 {
+        font-size: 26px;
+    }
+
+    .back-btn {
+        padding: 9px 14px;
+        font-size: 12px;
+    }
+
+    .settings-card {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .account-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .settings-header {
+        flex-direction: column;
+    }
+
+    .settings-card {
+        flex-direction: column;
+    }
+
+    .card-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 21px;
+    }
+
+    .card-content h2 {
+        font-size: 17px;
+    }
+
+    .toggle-row {
+        width: 100%;
+    }
+}
+/* =========================================
+   CHANGE PASSWORD MODAL
+========================================= */
+
+.password-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(5px);
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+    padding: 20px;
+}
+
+.password-modal.show {
+    display: flex;
+}
+
+
+/* PASSWORD BOX */
+
+.password-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 450px;
+
+    background: white;
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+
+    animation: passwordPopup 0.25s ease;
+}
+
+
+@keyframes passwordPopup {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* CLOSE BUTTON */
+
+.close-btn {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f3f4f6;
+    color: #555;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.close-btn:hover {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+
+/* PASSWORD ICON */
+
+.password-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f0e7ff;
+
+    border-radius: 16px;
+
+    font-size: 28px;
+
+    margin-bottom: 18px;
+}
+
+
+/* TITLE */
+
+.password-box h2 {
+    font-size: 23px;
+    color: #333;
+
+    margin-bottom: 5px;
+}
+
+.password-subtitle {
+    font-size: 13px;
+    color: #777;
+
+    margin-bottom: 25px;
+}
+
+
+/* PASSWORD FIELDS */
+
+.password-field {
+    margin-bottom: 17px;
+}
+
+.password-field label {
+    display: block;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    color: #444;
+
+    margin-bottom: 7px;
+}
+
+.password-field input {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+
+    outline: none;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+
+    transition: 0.3s ease;
+}
+
+.password-field input:focus {
+    border-color: #5b21b6;
+
+    box-shadow:
+        0 0 0 3px rgba(91, 33, 182, 0.10);
+}
+
+
+/* MESSAGE */
+
+.password-message {
+    font-size: 13px;
+
+    margin: 5px 0 15px;
+
+    min-height: 18px;
+}
+
+.password-message.error {
+    color: #dc2626;
+}
+
+.password-message.success {
+    color: #16a34a;
+}
+
+
+/* BUTTONS */
+
+.password-buttons {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 10px;
+}
+
+.cancel-btn,
+.update-password-btn {
+    flex: 1;
+
+    border: none;
+
+    padding: 12px;
+
+    border-radius: 9px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+/* CANCEL */
+
+.cancel-btn {
+    background: #f3f4f6;
+    color: #555;
+}
+
+.cancel-btn:hover {
+    background: #e5e7eb;
+}
+
+
+/* UPDATE */
+
+.update-password-btn {
+    background: #5b21b6;
+    color: white;
+}
+
+.update-password-btn:hover {
+    background: #4c1d95;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+body.dark-mode .password-box {
+    background: #1f2937;
+}
+
+body.dark-mode .password-box h2 {
+    color: #f3f4f6;
+}
+
+body.dark-mode .password-subtitle {
+    color: #9ca3af;
+}
+
+body.dark-mode .password-field label {
+    color: #e5e7eb;
+}
+
+body.dark-mode .password-field input {
+    background: #374151;
+    border-color: #4b5563;
+    color: white;
+}
+
+body.dark-mode .password-field input::placeholder {
+    color: #9ca3af;
+}
+
+body.dark-mode .password-icon {
+    background: #312e81;
+}
+
+body.dark-mode .close-btn {
+    background: #374151;
+    color: #e5e7eb;
+}
+
+body.dark-mode .cancel-btn {
+    background: #374151;
+    color: #e5e7eb;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .password-modal {
+        padding: 15px;
+    }
+
+    .password-box {
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+
+    .password-box h2 {
+        font-size: 20px;
+    }
+
+    .password-buttons {
+        flex-direction: column;
+    }
+
+    .cancel-btn,
+    .update-password-btn {
+        width: 100%;
+    }
+
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login | TravelVerse AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin-login.css') }}">
+</head>
+
+<body>
+
+    <div class="admin-container">
+
+        <div class="admin-card">
+
+            <div class="admin-icon">
+                👑
+            </div>
+
+            <h1>TravelVerse AI</h1>
+
+            <h2>Admin Login</h2>
+
+            <p class="subtitle">
+                Login to access the administration dashboard
+            </p>
+
+            <form id="adminLoginForm">
+
+                <div class="input-group">
+                    <label for="email">Admin Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter admin email"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter admin password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="login-btn">
+                    🔐 Login
+                </button>
+
+            </form>
+
+            <p id="message" class="message"></p>
+
+            <a href="/" class="back-link">
+                ← Back to TravelVerse
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        document
+            .getElementById("adminLoginForm")
+            .addEventListener("submit", async function(event) {
+
+                event.preventDefault();
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const password =
+                    document.getElementById("password").value.trim();
+
+                const message =
+                    document.getElementById("message");
+
+                try {
+
+                    const response = await fetch("/admin-login", {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            email: email,
+                            password: password
+                        })
+
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+
+                        message.textContent =
+                            "Login successful! Redirecting...";
+
+                        message.className =
+                            "message success";
+
+                        setTimeout(function() {
+                            window.location.href =
+                                "/admin-dashboard";
+                        }, 800);
+
+                    } else {
+
+                        message.textContent =
+                            data.message || "Invalid admin credentials.";
+
+                        message.className =
+                            "message error";
+                    }
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    message.textContent =
+                        "Server error. Please try again.";
+
+                    message.className =
+                        "message error";
+                }
+
+            });
+
+    </script>
+
+</body>
+</html>
